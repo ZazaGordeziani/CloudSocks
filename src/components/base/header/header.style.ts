@@ -10,8 +10,9 @@ export const header = cva(
         'justify-between',
         'items-center',
         'px-4',
-        'py-4',
+
         'mx-auto',
+        'my-auto',
         'bg-main-blue	',
     ],
     {

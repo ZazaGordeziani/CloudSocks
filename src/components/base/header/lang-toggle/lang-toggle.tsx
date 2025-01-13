@@ -1,13 +1,18 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 // Language Toggle Button
 const Langtoggle = () => {
+    // const { lang } = useParams<{ lang: string }>()
+    const navigate = useNavigate()
+    const currentPath = window.location.pathname.split('/').slice(2).join('/')
     const { t, i18n } = useTranslation()
     const [open, setOpen] = useState(false)
-    const handleLanguageChange = (lang: string) => {
-        i18n.changeLanguage(lang)
+    const handleLanguageChange = (selectedLang: string) => {
+        i18n.changeLanguage(selectedLang) // Change i18n language
+        navigate(`/${selectedLang}/${currentPath}`)
         setOpen(false)
     }
 
@@ -16,7 +21,7 @@ const Langtoggle = () => {
             {/* Dropdown trigger */}
             <DropdownMenuPrimitive.Trigger
                 asChild
-                className="hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex h-10 w-10 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-10 w-10 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                 type="button"
                 aria-haspopup="menu"
                 aria-expanded={open ? 'true' : 'false'}
@@ -25,7 +30,7 @@ const Langtoggle = () => {
                 {/* Your button icon */}
 
                 <button
-                    className="[&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex h-10 w-10 items-center justify-center gap-2 whitespace-nowrap rounded-md border text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                    className="[&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 inline-flex h-10 w-10 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-input bg-background text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                     type="button"
                     id="radix-:re:"
                     aria-haspopup="menu"
@@ -78,7 +83,7 @@ const Langtoggle = () => {
                 data-radix-menu-content=""
                 id="radix-:r2:"
                 aria-labelledby="radix-:r1:"
-                className="bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-md"
+                className="z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2"
                 tabIndex={-1}
                 data-orientation="vertical"
                 style={
@@ -99,7 +104,7 @@ const Langtoggle = () => {
             >
                 <div
                     role="menuitem"
-                    className="[&amp;>svg]:size-4 [&amp;>svg]:shrink-0 hover:bg-accent hover:text-accent-foreground relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                    className="[&amp;>svg]:size-4 [&amp;>svg]:shrink-0 relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
                     tabIndex={-1}
                     data-orientation="vertical"
                     data-radix-collection-item=""
@@ -110,7 +115,7 @@ const Langtoggle = () => {
 
                 <div
                     role="menuitem"
-                    className="[&amp;>svg]:size-4 [&amp;>svg]:shrink-0 hover:bg-accent hover:text-accent-foreground relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+                    className="[&amp;>svg]:size-4 [&amp;>svg]:shrink-0 relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
                     tabIndex={-1}
                     data-orientation="vertical"
                     data-radix-collection-item=""
@@ -130,7 +135,7 @@ export default Langtoggle
 }
 
 ;<button
-    className="[&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border-input bg-background ring-offset-background hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring inline-flex h-10 w-10 items-center justify-center gap-2 whitespace-nowrap rounded-md border text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+    className="[&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 inline-flex h-10 w-10 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-input bg-background text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
     type="button"
     id="radix-:re:"
     aria-haspopup="menu"

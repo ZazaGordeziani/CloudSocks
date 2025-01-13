@@ -9,15 +9,16 @@ const LazyMainPage = lazy(() => import('@/pages/main/main'))
 const LazyAboutPage = lazy(() => import('@/pages/about/views'))
 const LazyProductsPage = lazy(() => import('@/pages/products/views'))
 const LazySignInPage = lazy(() => import('@/pages/sign-in/view'))
+const LazyNotFoundPage = lazy(() => import('@/pages/404/index'))
 
 function App() {
     return (
         <>
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
                 <Routes>
-                    <Route element={<DefaultLayout />}>
+                    <Route path="/:lang" element={<DefaultLayout />}>
                         <Route
-                            path="/"
+                            path="home"
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <LazyMainPage />
@@ -25,7 +26,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="/about"
+                            path="about"
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <LazyAboutPage />
@@ -33,7 +34,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="/products"
+                            path="products"
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <LazyProductsPage />
@@ -41,7 +42,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="/signin"
+                            path="signin"
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <LazySignInPage />
@@ -49,7 +50,8 @@ function App() {
                             }
                         />
                     </Route>
-                    <Route path="/" element={<Navigate to="/home" />} />
+                    <Route path="/" element={<Navigate to="/ka/home" />} />
+                    <Route path="*" element={<LazyNotFoundPage />} />
                 </Routes>
             </ThemeProvider>
         </>

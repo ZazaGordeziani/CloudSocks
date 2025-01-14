@@ -1,19 +1,29 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 
-// Language Toggle Button
 const Langtoggle = () => {
-    // const { lang } = useParams<{ lang: string }>()
+    const location = useLocation()
+    const langSegment = location.pathname.split('/')
+    const validLangs = ['en', 'ka']
+    const lang = langSegment[1]
     const navigate = useNavigate()
     const currentPath = window.location.pathname.split('/').slice(2).join('/')
     const { t, i18n } = useTranslation()
     const [open, setOpen] = useState(false)
     const handleLanguageChange = (selectedLang: string) => {
-        i18n.changeLanguage(selectedLang) // Change i18n language
+        i18n.changeLanguage(selectedLang)
         navigate(`/${selectedLang}/${currentPath}`)
         setOpen(false)
+    }
+
+    if (validLangs.includes(lang) && i18n.language !== lang) {
+        i18n.changeLanguage(lang)
+    }
+
+    if (!validLangs.includes(lang)) {
+        return <Navigate to="/ka/home" />
     }
 
     return (
@@ -27,8 +37,6 @@ const Langtoggle = () => {
                 aria-expanded={open ? 'true' : 'false'}
                 data-state={open ? 'open' : 'closed'}
             >
-                {/* Your button icon */}
-
                 <button
                     className="[&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 inline-flex h-10 w-10 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-input bg-background text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                     type="button"

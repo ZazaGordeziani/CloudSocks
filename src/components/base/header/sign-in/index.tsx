@@ -14,5 +14,4 @@ const SignIn = () => {
         </Link>
     )
 }
-
 export default SignIn

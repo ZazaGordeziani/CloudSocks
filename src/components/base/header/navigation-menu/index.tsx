@@ -1,5 +1,5 @@
-import DesktopNav from '@/components/base/header/navigation-menu/desktop-nav'
-import MobileNav from '@/components/base/header/navigation-menu/mobile-nav'
+import DesktopNav from '@/components/base/header/navigation-menu/desktop-nav/desktop-nav'
+import MobileNav from '@/components/base/header/navigation-menu/mobile-nav/mobile-nav'
 import { useMediaQuery } from '@/hooks/use-media-query'
 
 //

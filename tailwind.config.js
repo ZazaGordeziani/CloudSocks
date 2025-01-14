@@ -4,7 +4,14 @@ export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
+            // backgroundImage : (theme){
+            //     'aboutUsHeroLight':
+            //     "url('@/')"
+            // }
             colors: {
+                light: '#f6f9fe',
+                'about-hero-dark': '#434e60',
+
                 'main-blue': 'rgb(59 130 246 /50%)',
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',

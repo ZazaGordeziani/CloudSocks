@@ -1,5 +1,6 @@
-import CloudSocksFeatures from '@/pages/about/components/cloud-socks-features'
-import AboutUsHero from '@/pages/about/components/hero'
+import CloudSocksFeatures from '@/pages/about/components/features/cloud-socks-features'
+import AboutUsHero from '@/pages/about/components/hero/view/hero'
+// import Story from '@/pages/about/components/'
 import Story from '@/pages/about/components/story'
 
 const AboutUs = () => {
@@ -8,7 +9,6 @@ const AboutUs = () => {
             <AboutUsHero />
             <Story />
             <CloudSocksFeatures />
-            <div>link to shop</div>
         </div>
     )
 }

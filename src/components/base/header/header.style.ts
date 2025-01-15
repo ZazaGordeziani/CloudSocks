@@ -4,12 +4,13 @@ export const header = cva(
     [
         // "xl: w-xl",
 
-        'h-[70px]',
+        'h-auto',
         'w-full',
         'flex',
         'justify-between',
         'items-center',
         'px-4',
+        'py-4',
 
         'mx-auto',
         'my-auto',

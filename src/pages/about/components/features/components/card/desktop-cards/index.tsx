@@ -24,7 +24,7 @@ const DesktopFeatures = () => {
                             <img
                                 src={image}
                                 alt={title}
-                                className="h-[360px] rounded-3xl sm:w-1/2"
+                                className="h-[360px] w-1/2 max-w-[500px] rounded-3xl"
                             />
                             <div className="flex w-2/3 flex-col gap-5 px-3">
                                 <h2 className="text-3xl font-semibold">

@@ -1,4 +1,4 @@
-import CloudSocksFeatures from '@/pages/about/components/features/cloud-socks-features'
+import CloudSocksFeatures from '@/pages/about/components/features/view'
 import AboutUsHero from '@/pages/about/components/hero/view/hero'
 // import Story from '@/pages/about/components/'
 import Story from '@/pages/about/components/story'

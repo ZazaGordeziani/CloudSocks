@@ -1,0 +1,58 @@
+{
+    "terms-main-heading": "Terms of Service",
+
+    "sections": [
+        {
+            "heading": "1. Introduction",
+            "paragraph": "Welcome to CloudSocks. These Terms and Conditions govern your use of our website and the purchase of our products. By accessing our site and placing an order, you agree to be bound by these terms. If you do not agree, please refrain from using our services."
+        },
+
+        {
+            "heading": "2. Definitions",
+
+            "paragraph": "Website refers to CloudSocks' online platform 'We', 'Us', 'Our' refers to CloudSocks. 'You', 'Your' refers to the user or customer."
+        },
+
+        {
+            "heading": "3. Use of the Website",
+
+            "paragraph": "4. You agree to use the website for lawful purposes and in a way that does not infringe the rights of others or restrict their use of the site. Prohibited behavior includes harassing or causing distress to any person and transmitting obscene or offensive content."
+        },
+
+        {
+            "heading": "5. Product Information",
+            "paragraph": "We strive to display product colors and images accurately. However, we cannot guarantee that your device's display will accurately reflect the actual product colors. All descriptions and pricing are subject to change without notice."
+        },
+
+        {
+            "heading": "6. Orders and Payments",
+
+            "paragraph": "7. By placing an order, you agree to provide current, complete, and accurate purchase information. We reserve the right to refuse or cancel orders at our discretion. Payments must be made through the methods specified on the website."
+        },
+
+        {
+            "heading": "8. Intellectual Property",
+            "paragraph": "All content on this website, including text, graphics, logos, and images, is the property of CloudSocks and is protected by intellectual property laws. Unauthorized use is prohibited."
+        },
+
+        {
+            "heading": "9. Limitation of Liability",
+            "paragraph": "We are not liable for any indirect, incidental, or consequential damages arising from the use of our website or products. Our total liability to you for any claim arising from these terms shall not exceed the amount paid for the product in question."
+        },
+
+        {
+            "heading": "10. Indemnification",
+            "paragraph": "You agree to indemnify and hold CloudSocks harmless from any claims, damages, or expenses arising from your use of the website or breach of these terms."
+        },
+
+        {
+            "heading": "11. Changes to Terms and Conditions",
+
+            "paragraph": "We reserve the right to update these terms at any time. Changes will be posted on this page, and your continued use of the website constitutes acceptance of the revised terms."
+        },
+        {
+            "heading": "12. Governing Law",
+            "paragraph": "These terms are governed by the laws of [Your Country/State], without regard to its conflict of law principles."
+        }
+    ]
+}

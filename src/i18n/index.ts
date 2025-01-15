@@ -10,6 +10,10 @@ import cookieKa from '@/i18n/ka/pages/cookie-policy/cookie.json'
 import cookieEN from '@/i18n/En/pages/cookie-policy/cookie.json'
 import privacyEn from '@/i18n/en/pages/privacy-policy/privacy.json'
 import privacyKa from '@/i18n/Ka/pages/privacy-policy/privacy.json'
+import termsConditionsEn from '@/i18n/en/pages/terms-conditions/terms-conditions.json'
+import termsConditionsKa from '@/i18n/ka/pages/terms-conditions/terms-conditions.json'
+import footerKa from '@/i18n/ka/footer/footer.json'
+import footerEn from '@/i18n/En/footer/footer.json'
 i18n.use(initReactI18next).init({
     resources: {
         ka: {
@@ -19,6 +23,8 @@ i18n.use(initReactI18next).init({
                 ...notFoundKa,
                 ...cookieKa,
                 ...privacyKa,
+                ...termsConditionsKa,
+                ...footerKa,
             },
         },
         en: {
@@ -28,6 +34,8 @@ i18n.use(initReactI18next).init({
                 ...notFoundEn,
                 ...cookieEN,
                 ...privacyEn,
+                ...termsConditionsEn,
+                ...footerEn,
             },
         },
     },

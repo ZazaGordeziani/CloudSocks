@@ -17,7 +17,7 @@ const DesktopFeatures = () => {
             {data.map(([title, description, image], index) => (
                 <div
                     key={index}
-                    className="bg-light flex h-auto w-2/3 flex-row items-center justify-evenly gap-4 rounded p-4 shadow-md dark:bg-gray-800"
+                    className="flex h-auto w-2/3 flex-row items-center justify-evenly gap-4 rounded bg-light p-4 shadow-md dark:bg-gray-800"
                 >
                     {index % 2 === 0 ? (
                         <>

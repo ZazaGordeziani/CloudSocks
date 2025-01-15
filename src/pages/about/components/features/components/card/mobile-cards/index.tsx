@@ -16,7 +16,7 @@ const MobileFeatures = () => {
             {data.map(([title, description, image], index) => (
                 <div
                     key={index}
-                    className="bg-light flex w-full flex-col items-center gap-4 p-4 shadow-md dark:bg-gray-800"
+                    className="flex w-full flex-col items-center gap-4 bg-light p-4 shadow-md dark:bg-gray-800"
                 >
                     <>
                         <div className="flex w-1/2 flex-col gap-5">

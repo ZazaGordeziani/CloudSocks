@@ -12,6 +12,9 @@ const LazySignInPage = lazy(() => import('@/pages/sign-in/view'))
 const LazyNotFoundPage = lazy(() => import('@/pages/404/index'))
 const LazyCookiePage = lazy(() => import('@/pages/cookie/index'))
 const LazyPrivacyPolicyPage = lazy(() => import('@/pages/privacy/index'))
+const LazyTermsConditionsPage = lazy(
+    () => import('@/pages/terms-conditions/index'),
+)
 
 function App() {
     return (
@@ -64,6 +67,14 @@ function App() {
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <LazyPrivacyPolicyPage />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="terms&conditions"
+                            element={
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <LazyTermsConditionsPage />
                                 </Suspense>
                             }
                         />

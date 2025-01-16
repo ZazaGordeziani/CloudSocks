@@ -12,8 +12,6 @@ export const header = cva(
         'px-4',
         'py-4',
 
-        'mx-auto',
-        'my-auto',
         'bg-main-blue	',
     ],
     {

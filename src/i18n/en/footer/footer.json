@@ -1,5 +1,10 @@
 {
     "footer-pages": "Pages",
+    "footer-cookie": "Cookie Policy",
+    "footer-privacy": "Privacy Policy",
     "footer-contact": "Contact Us",
-    "footer-join": "Join Us"
+    "footer-join": "Join Us",
+    "footer-shipping": "Shipping & Return",
+    "footer-terms": "Terms & Conditions",
+    "subscribe-text": "Stay informed about our exclusive promotions by subscribing to the CloudSocks newsletter."
 }

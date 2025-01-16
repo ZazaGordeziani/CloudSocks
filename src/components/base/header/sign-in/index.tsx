@@ -8,7 +8,7 @@ const SignIn = () => {
 
     return (
         <Link to="signIn">
-            <Button className="bg-white dark:bg-blue-700">
+            <Button className="bg-blue-500 dark:bg-blue-700">
                 <HeaderNavItem text={t('nav-item-sign-in')} />{' '}
             </Button>
         </Link>

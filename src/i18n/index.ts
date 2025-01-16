@@ -7,7 +7,7 @@ import aboutUsKa from '@/i18n/ka/pages/about-us/about-us.json'
 import notFoundEn from '@/i18n/en/pages/404/404.json'
 import notFoundKa from '@/i18n/ka/pages/404/404.json'
 import cookieKa from '@/i18n/ka/pages/cookie-policy/cookie.json'
-import cookieEN from '@/i18n/En/pages/cookie-policy/cookie.json'
+import cookieEn from '@/i18n/En/pages/cookie-policy/cookie.json'
 import privacyEn from '@/i18n/en/pages/privacy-policy/privacy.json'
 import privacyKa from '@/i18n/Ka/pages/privacy-policy/privacy.json'
 import termsConditionsEn from '@/i18n/en/pages/terms-conditions/terms-conditions.json'
@@ -32,7 +32,7 @@ i18n.use(initReactI18next).init({
                 ...headerTranslationsEn,
                 ...aboutUsEn,
                 ...notFoundEn,
-                ...cookieEN,
+                ...cookieEn,
                 ...privacyEn,
                 ...termsConditionsEn,
                 ...footerEn,

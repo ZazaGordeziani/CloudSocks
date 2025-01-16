@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 export const DesktopHeader = () => {
     const { t } = useTranslation()
     return (
-        <div className={`${header()} lg:py-6`}>
+        <div className={`${header()} `}>
             <HeaderTitle title={t('title-translation')} />
             <NavigationMenu />
 

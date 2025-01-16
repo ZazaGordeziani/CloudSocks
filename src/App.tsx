@@ -15,6 +15,9 @@ const LazyPrivacyPolicyPage = lazy(() => import('@/pages/privacy/index'))
 const LazyTermsConditionsPage = lazy(
     () => import('@/pages/terms-conditions/index'),
 )
+const LazyShippongReturnPage = lazy(
+    () => import('@/pages/shipping-return/index'),
+)
 
 function App() {
     return (
@@ -75,6 +78,14 @@ function App() {
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <LazyTermsConditionsPage />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="shipping&return"
+                            element={
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <LazyShippongReturnPage />
                                 </Suspense>
                             }
                         />

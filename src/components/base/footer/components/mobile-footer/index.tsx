@@ -5,10 +5,10 @@ import Subscribe from '@/components/base/footer/components/subscribe'
 
 const MobileFooter = () => {
     return (
-        <div className="dark:text-grey-600 mt-8 flex h-auto w-screen flex-col justify-evenly gap-5 bg-main-blue px-5 py-12 text-white lg:py-20">
-            <div className="flex">
+        <div className="dark:text-grey-600 mt-8 flex h-auto w-screen flex-col items-center justify-evenly gap-5 bg-main-blue px-5 py-12 text-white lg:py-20">
+            <div className="flex gap-5">
                 <PagesNav />
-                <div>
+                <div className="flex flex-col gap-5">
                     <ContactItem />
                     <JoinUs />
                 </div>

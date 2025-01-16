@@ -14,6 +14,9 @@ const DesktopFeatures = () => {
     ]
     return (
         <div className="flex flex-col items-center gap-6">
+            <h1 className="rounded-xl bg-light p-5 text-2xl font-bold tracking-wider dark:bg-gray-800">
+                Choose CloudSocks
+            </h1>
             {data.map(([title, description, image], index) => (
                 <div
                     key={index}

@@ -5,7 +5,7 @@ import DefaultLayout from '@/layouts/default'
 import { lazy } from 'react'
 import { ThemeProvider } from '@/components/ui/theme-provider'
 
-const LazyMainPage = lazy(() => import('@/pages/main/main'))
+const LazyMainPage = lazy(() => import('@/pages/main/components/view/main'))
 const LazyAboutPage = lazy(() => import('@/pages/about/views'))
 const LazyProductsPage = lazy(() => import('@/pages/products/views'))
 const LazySignInPage = lazy(() => import('@/pages/sign-in/view'))

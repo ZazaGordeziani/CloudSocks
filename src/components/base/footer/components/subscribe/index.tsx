@@ -11,15 +11,18 @@ const Subscribe = () => {
         }
     }
     return (
-        <div className="flex max-w-[400px] flex-col gap-3 rounded-md bg-gray-900 p-6 text-slate-500 dark:text-slate-300">
+        <div className="flex max-w-[535px] flex-col gap-3 rounded-md bg-gray-900 p-6 text-slate-500 dark:text-slate-300 xl:max-w-[600px]">
             <h1 className="text-lg lg:text-xl">{t('footer-subscribe-text')}</h1>
             <input
                 type="text"
                 name="email"
+                placeholder="Enter E-mail"
                 ref={emailInput}
                 className="h-10 text-center text-black"
             />
-            <Button onClick={handleSubscribe}>Subscribe</Button>
+            <Button onClick={handleSubscribe} className="font-bold">
+                {t('subscribe')}
+            </Button>
         </div>
     )
 }

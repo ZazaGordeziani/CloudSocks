@@ -14,6 +14,8 @@ import termsConditionsEn from '@/i18n/en/pages/terms-conditions/terms-conditions
 import termsConditionsKa from '@/i18n/ka/pages/terms-conditions/terms-conditions.json'
 import footerKa from '@/i18n/ka/footer/footer.json'
 import footerEn from '@/i18n/En/footer/footer.json'
+import mainKa from '@/i18n/ka/pages/main/main.json'
+import mainEn from '@/i18n/En/pages/main/main.json'
 i18n.use(initReactI18next).init({
     resources: {
         ka: {
@@ -25,6 +27,7 @@ i18n.use(initReactI18next).init({
                 ...privacyKa,
                 ...termsConditionsKa,
                 ...footerKa,
+                ...mainKa,
             },
         },
         en: {
@@ -36,6 +39,7 @@ i18n.use(initReactI18next).init({
                 ...privacyEn,
                 ...termsConditionsEn,
                 ...footerEn,
+                ...mainEn,
             },
         },
     },

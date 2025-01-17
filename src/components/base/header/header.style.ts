@@ -11,6 +11,7 @@ export const header = cva(
         'items-center',
         'px-4',
         'py-4',
+        'mb-8',
 
         'bg-main-blue	',
     ],

@@ -8,7 +8,7 @@ import { ThemeProvider } from '@/components/ui/theme-provider'
 const LazyMainPage = lazy(() => import('@/pages/main/components/view/main'))
 const LazyAboutPage = lazy(() => import('@/pages/about/views'))
 const LazyProductsPage = lazy(() => import('@/pages/products/views'))
-const LazySignInPage = lazy(() => import('@/pages/sign-in/view'))
+const LazySignInPage = lazy(() => import('@/pages/auth/sign-in/view'))
 const LazyNotFoundPage = lazy(() => import('@/pages/404/index'))
 const LazyCookiePage = lazy(() => import('@/pages/cookie/index'))
 const LazyPrivacyPolicyPage = lazy(() => import('@/pages/privacy/index'))
@@ -18,6 +18,7 @@ const LazyTermsConditionsPage = lazy(
 const LazyShippongReturnPage = lazy(
     () => import('@/pages/shipping-return/index'),
 )
+const LazySignUpPage = lazy(() => import('@/pages/auth/sigh-up/view/index'))
 
 function App() {
     return (
@@ -86,6 +87,14 @@ function App() {
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <LazyShippongReturnPage />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="signup"
+                            element={
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <LazySignUpPage />
                                 </Suspense>
                             }
                         />

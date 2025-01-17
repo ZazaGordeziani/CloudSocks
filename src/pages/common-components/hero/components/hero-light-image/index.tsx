@@ -4,8 +4,8 @@ const HeroImgLight = () => {
     return (
         <img
             src={lightHeroImage}
-            className="h-[40vh] dark:hidden"
-            alt="dark mode logo"
+            className="h-[25vh] px-5 dark:hidden lg:h-[30vh] xl:h-[35vh]"
+            alt="light mode logo"
         />
     )
 }

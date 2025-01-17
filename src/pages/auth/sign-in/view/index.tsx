@@ -1,4 +1,4 @@
-import SignIn from '@/pages/sign-in/components/sign-in'
+import SignIn from '@/pages/auth/sign-in/components/sign-in'
 
 const SignInView = () => {
     return (

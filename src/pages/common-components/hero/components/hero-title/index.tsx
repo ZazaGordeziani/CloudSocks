@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 const HeroTitle = () => {
     const { t } = useTranslation()
     return (
-        <h1 className="m-auto max-w-72 text-center text-3xl text-sky-600 md:pl-7">
+        <h1 className="m-auto max-w-72 text-center text-2xl text-sky-600 md:pl-7 lg:text-3xl">
             {t('about-main-title')}{' '}
         </h1>
     )

@@ -14,7 +14,7 @@ const MobileFeatures = () => {
     return (
         <div className="flex h-auto flex-col items-center gap-6">
             <h1 className="rounded-lg bg-light p-4 text-2xl font-bold tracking-wider dark:bg-gray-800">
-                Choose CloudSocks
+                {t('features-heading')}
             </h1>
 
             {data.map(([title, description, image], index) => (
@@ -23,7 +23,7 @@ const MobileFeatures = () => {
                     className="flex w-full flex-col items-center gap-4 bg-light p-4 shadow-md dark:bg-gray-800"
                 >
                     <>
-                        <div className="flex w-1/2 flex-col gap-5">
+                        <div className="flex w-2/3 flex-col gap-5 py-8">
                             <img className="h-9 w-9" src={image} alt="" />
                             <h2 className="text-2xl font-semibold">{title}</h2>
                             <p

@@ -9,7 +9,7 @@ export default {
             //     "url('@/')"
             // }
             colors: {
-                light: '#f6f9fe',
+                light: '#dde0e4',
                 'about-hero-dark': '#434e60',
 
                 'main-blue': 'rgba(9,103,155,255)',

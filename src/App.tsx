@@ -5,7 +5,7 @@ import DefaultLayout from '@/layouts/default'
 import { lazy } from 'react'
 import { ThemeProvider } from '@/components/ui/theme-provider'
 import { supabase } from '@/supabase'
-import { useAtom } from 'jotai'
+import { useSetAtom } from 'jotai'
 import { userAtom } from '@/store/auth'
 
 const LazyMainPage = lazy(() => import('@/pages/main/components/view/main'))
@@ -22,10 +22,10 @@ const LazyShippongReturnPage = lazy(
     () => import('@/pages/shipping-return/index'),
 )
 const LazySignUpPage = lazy(() => import('@/pages/auth/sigh-up/view/index'))
+const LazyProfilePage = lazy(() => import('@/pages/account/view/profile/index'))
 
 function App() {
-    // const [, setSession] = useState<AfterLogIn | null>(null)
-    const [, setUser] = useAtom(userAtom)
+    const setUser = useSetAtom(userAtom)
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
             setUser(session)
@@ -34,7 +34,6 @@ function App() {
         const {
             data: { subscription },
         } = supabase.auth.onAuthStateChange((_event, session) => {
-            console.log('session :', session)
             setUser(session)
         })
 
@@ -114,6 +113,14 @@ function App() {
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <LazySignUpPage />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="profile"
+                            element={
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <LazyProfilePage />
                                 </Suspense>
                             }
                         />

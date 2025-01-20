@@ -1,5 +1,7 @@
 {
     "sign-up-submit": "Register",
     "sign-up-account-question": "Do you have an account?",
-    "sign-up-login": "Sign In"
+    "sign-up-login": "Sign In",
+    "invalid_email": "Invalid Email",
+    "invalid_password": "Invalid password"
 }

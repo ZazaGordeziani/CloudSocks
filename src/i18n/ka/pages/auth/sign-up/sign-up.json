@@ -1,5 +1,6 @@
 {
     "sign-in-submit": "შესვლა",
     "sign-in-account-question": "არ გაქვთ ანგარიში?",
-    "sign-in-register": "რეგისტრაცია"
+    "sign-in-register": "რეგისტრაცია",
+    "invalid_email": "ელ.ფოსტა არასწორია"
 }

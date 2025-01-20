@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/drawer'
 import { userAtom } from '@/store/auth'
 import { logout } from '@/supabase/auth'
-import { useAtom } from 'jotai'
+import { useAtomValue } from 'jotai'
 import { MenuIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom'
 const MobileNav = () => {
     const { t } = useTranslation()
     const [isOpen, setIsOpen] = useState(false)
-    const [user] = useAtom(userAtom)
+    const user = useAtomValue(userAtom)
 
     const closeDrawer = () => {
         setIsOpen(false)

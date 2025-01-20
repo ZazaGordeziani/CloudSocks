@@ -10,9 +10,11 @@
         "lint": "eslint .",
         "prettier": "prettier . --write",
         "preview": "vite preview",
-        "prepare": "husky"
+        "prepare": "husky",
+        "update-supabase-types": "npx supabase gen types typescript --project-id qxbldcftpfhmgncpxrhx --schema public > src/supabase/supabase.types.tsnpx supabase gen types typescript --project-id qxbldcftpfhmgncpxrhx --schema public > src/supabase/supabase.types.ts"
     },
     "dependencies": {
+        "@hookform/resolvers": "^3.10.0",
         "@radix-ui/react-dialog": "^1.1.4",
         "@radix-ui/react-dropdown-menu": "^2.1.4",
         "@radix-ui/react-slot": "^1.1.1",
@@ -26,11 +28,13 @@
         "lucide-react": "^0.469.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
+        "react-hook-form": "^7.54.2",
         "react-i18next": "^15.4.0",
         "react-router-dom": "^7.1.1",
         "tailwind-merge": "^2.6.0",
         "tailwindcss-animate": "^1.0.7",
-        "vaul": "^1.1.2"
+        "vaul": "^1.1.2",
+        "zod": "^3.24.1"
     },
     "devDependencies": {
         "@eslint/js": "^9.17.0",
@@ -47,7 +51,7 @@
         "postcss": "^8.4.49",
         "prettier": "3.4.2",
         "prettier-plugin-tailwindcss": "^0.6.9",
-        "supabase": ">=1.8.1",
+        "supabase": "^2.6.8",
         "tailwindcss": "^3.4.17",
         "typescript": "~5.6.2",
         "typescript-eslint": "^8.18.2",

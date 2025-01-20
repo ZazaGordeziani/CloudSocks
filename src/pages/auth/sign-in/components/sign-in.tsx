@@ -3,10 +3,12 @@ import { useMutation } from '@tanstack/react-query'
 import { login } from '@/supabase/auth'
 import { Button } from '@/components/ui/button'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const SignIn = () => {
     const { lang } = useParams()
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const [signInPayload, setSignInPayload] = useState({
         email: '',
@@ -17,11 +19,14 @@ const SignIn = () => {
         mutationKey: ['login'],
         mutationFn: login,
         onSuccess: () => {
-            console.log('loggedin')
-            console.log(`/${lang}/home`)
             navigate(`/${lang}/home`)
         },
+        onError: (error) => {
+            console.error('Error during login:', error.message)
+        },
     })
+
+    // console.log(isError, error)
 
     const handleSubmit = () => {
         const isEmailFilled = !!signInPayload.email
@@ -58,13 +63,23 @@ const SignIn = () => {
                         })
                     }}
                 />
-                <Button onClick={handleSubmit} className="text-xl lg:text-2xl">
-                    Submit
+                <Button
+                    onClick={handleSubmit}
+                    className="text-xl tracking-wider lg:text-2xl"
+                >
+                    {t('sign-in-submit')}
                 </Button>
                 <div className="flex gap-8 pt-10">
-                    <p>Do not have an account?</p>
+                    <p className="my-auto text-2xl lg:text-2xl">
+                        {' '}
+                        {t('sign-in-account-question')}
+                    </p>
 
-                    <Link to={`/${lang}/signUp`}>Sign Up</Link>
+                    <Link to={`/${lang}/signUp`}>
+                        <Button className="text-2xl lg:text-2xl">
+                            {t('sign-in-register')}
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>

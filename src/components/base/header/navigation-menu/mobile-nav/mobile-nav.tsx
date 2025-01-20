@@ -6,6 +6,9 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from '@/components/ui/drawer'
+import { userAtom } from '@/store/auth'
+import { logout } from '@/supabase/auth'
+import { useAtom } from 'jotai'
 import { MenuIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -14,6 +17,7 @@ import { Link } from 'react-router-dom'
 const MobileNav = () => {
     const { t } = useTranslation()
     const [isOpen, setIsOpen] = useState(false)
+    const [user] = useAtom(userAtom)
 
     const closeDrawer = () => {
         setIsOpen(false)
@@ -36,13 +40,24 @@ const MobileNav = () => {
                             <Link to="about" onClick={closeDrawer}>
                                 <HeaderNavItem text={t('nav-item-about')} />{' '}
                             </Link>
-                            <Link to="signIn" onClick={closeDrawer}>
-                                <Button className="bg-white dark:bg-blue-700">
+                            {user ? (
+                                <Button
+                                    onClick={logout}
+                                    className="bg-white dark:bg-blue-700"
+                                >
                                     <HeaderNavItem
-                                        text={t('nav-item-sign-in')}
+                                        text={t('nav-item-sign-out')}
                                     />{' '}
                                 </Button>
-                            </Link>
+                            ) : (
+                                <Link to="signIn" onClick={closeDrawer}>
+                                    <Button className="bg-white dark:bg-blue-700">
+                                        <HeaderNavItem
+                                            text={t('nav-item-sign-in')}
+                                        />{' '}
+                                    </Button>
+                                </Link>
+                            )}
                         </div>
                     </DrawerContent>
                 </DrawerTitle>

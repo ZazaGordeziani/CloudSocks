@@ -16,6 +16,11 @@ import footerKa from '@/i18n/ka/footer/footer.json'
 import footerEn from '@/i18n/en/footer/footer.json'
 import mainKa from '@/i18n/ka/pages/main/main.json'
 import mainEn from '@/i18n/en/pages/main/main.json'
+import signInEn from '@/i18n/en/pages/auth/sign-in/sign-in.json'
+import signInKa from '@/i18n/ka/pages/auth/sign-in/sign-in.json'
+import signUpEn from '@/i18n/en/pages/auth/sign-up/sign-up.json'
+import signUpKa from '@/i18n/ka/pages/auth/sign-up/sign-up.json'
+
 i18n.use(initReactI18next).init({
     resources: {
         ka: {
@@ -28,6 +33,8 @@ i18n.use(initReactI18next).init({
                 ...termsConditionsKa,
                 ...footerKa,
                 ...mainKa,
+                ...signInKa,
+                ...signUpKa,
             },
         },
         en: {
@@ -40,6 +47,8 @@ i18n.use(initReactI18next).init({
                 ...termsConditionsEn,
                 ...footerEn,
                 ...mainEn,
+                ...signInEn,
+                ...signUpEn,
             },
         },
     },

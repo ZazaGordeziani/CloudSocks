@@ -31,3 +31,7 @@ export const login = ({
         return res
     })
 }
+
+export const logout = () => {
+    return supabase.auth.signOut()
+}

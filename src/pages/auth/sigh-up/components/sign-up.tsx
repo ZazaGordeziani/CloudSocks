@@ -3,10 +3,12 @@ import { useMutation } from '@tanstack/react-query'
 import { register } from '@/supabase/auth'
 import { Button } from '@/components/ui/button'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const SignUp = () => {
     const navigate = useNavigate()
     const { lang } = useParams()
+    const { t } = useTranslation()
 
     const [registerPayload, setRegisterPayload] = useState({
         email: '',
@@ -58,13 +60,22 @@ const SignUp = () => {
                         })
                     }}
                 />
-                <Button onClick={handleSubmit} className="text-xl lg:text-2xl">
-                    Submit
+                <Button
+                    onClick={handleSubmit}
+                    className="text-xl tracking-wider lg:text-2xl"
+                >
+                    {t('sign-up-submit')}
                 </Button>
                 <div className="flex gap-8 pt-10">
-                    <p>Do you have an account?</p>
+                    <p className="my-auto text-2xl lg:text-2xl">
+                        {t('sign-up-account-question')}
+                    </p>
 
-                    <Link to={`/${lang}/signin`}>Sign In</Link>
+                    <Link to={`/${lang}/signin`}>
+                        <Button className="text-2xl lg:text-2xl">
+                            {t('sign-up-login')}
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>

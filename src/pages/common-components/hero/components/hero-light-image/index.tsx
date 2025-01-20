@@ -1,4 +1,4 @@
-import lightHeroImage from '@/assets/logos/white logo.jpeg'
+import lightHeroImage from '@/assets/logos/22.png'
 
 const HeroImgLight = () => {
     return (

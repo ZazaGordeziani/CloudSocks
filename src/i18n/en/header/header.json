@@ -3,5 +3,6 @@
     "nav-item-home": "Home",
     "nav-item-products": "Products",
     "nav-item-about": "About",
-    "nav-item-sign-in": "Sign In"
+    "nav-item-sign-in": "Sign In",
+    "nav-item-sign-out": "Sign Out"
 }

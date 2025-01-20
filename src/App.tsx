@@ -1,9 +1,12 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import DefaultLayout from '@/layouts/default'
 import { lazy } from 'react'
 import { ThemeProvider } from '@/components/ui/theme-provider'
+import { supabase } from '@/supabase'
+import { useAtom } from 'jotai'
+import { userAtom } from '@/store/auth'
 
 const LazyMainPage = lazy(() => import('@/pages/main/components/view/main'))
 const LazyAboutPage = lazy(() => import('@/pages/about/views'))
@@ -21,6 +24,22 @@ const LazyShippongReturnPage = lazy(
 const LazySignUpPage = lazy(() => import('@/pages/auth/sigh-up/view/index'))
 
 function App() {
+    // const [, setSession] = useState<AfterLogIn | null>(null)
+    const [, setUser] = useAtom(userAtom)
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setUser(session)
+        })
+
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, session) => {
+            console.log('session :', session)
+            setUser(session)
+        })
+
+        return () => subscription.unsubscribe()
+    }, [setUser])
     return (
         <>
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">

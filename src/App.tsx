@@ -7,6 +7,8 @@ import { ThemeProvider } from '@/components/ui/theme-provider'
 import { supabase } from '@/supabase'
 import { useSetAtom } from 'jotai'
 import { userAtom } from '@/store/auth'
+import AuthGuard from '@/route-guards/auth/auth-guard'
+import UnAuthorizedGuard from '@/route-guards/auth/un-auth-guard'
 
 const LazyMainPage = lazy(() => import('@/pages/main/components/view/main'))
 const LazyAboutPage = lazy(() => import('@/pages/about/views'))
@@ -21,7 +23,7 @@ const LazyTermsConditionsPage = lazy(
 const LazyShippongReturnPage = lazy(
     () => import('@/pages/shipping-return/index'),
 )
-const LazySignUpPage = lazy(() => import('@/pages/auth/sigh-up/view/index'))
+const LazySignUpPage = lazy(() => import('@/pages/auth/sign-up/view/index'))
 const LazyProfilePage = lazy(() => import('@/pages/account/view/profile/index'))
 
 function App() {
@@ -72,7 +74,9 @@ function App() {
                             path="signin"
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
-                                    <LazySignInPage />
+                                    <AuthGuard>
+                                        <LazySignInPage />
+                                    </AuthGuard>
                                 </Suspense>
                             }
                         />
@@ -112,7 +116,9 @@ function App() {
                             path="signup"
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
-                                    <LazySignUpPage />
+                                    <AuthGuard>
+                                        <LazySignUpPage />
+                                    </AuthGuard>
                                 </Suspense>
                             }
                         />
@@ -120,7 +126,9 @@ function App() {
                             path="profile"
                             element={
                                 <Suspense fallback={<div>Loading...</div>}>
-                                    <LazyProfilePage />
+                                    <UnAuthorizedGuard>
+                                        <LazyProfilePage />
+                                    </UnAuthorizedGuard>
                                 </Suspense>
                             }
                         />

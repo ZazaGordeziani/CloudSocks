@@ -40,9 +40,9 @@ const SignUp = () => {
     }
 
     return (
-        <form className="flex h-full w-screen flex-col items-center justify-center gap-4">
+        <form className="flex h-full w-screen flex-col items-center justify-center gap-4 px-4 text-xl lg:w-[800px]">
             <div className="flex flex-col gap-4 rounded-lg border-2 border-solid border-black p-10 dark:border-white">
-                <label>{t('auth_email')}</label>
+                <label className="lg:text-2xl">{t('auth_email')}</label>
                 <Controller
                     name="email"
                     control={control}
@@ -68,19 +68,29 @@ const SignUp = () => {
                     }}
                 />
 
-                <label>{t('auth_password')}</label>
+                <label className="lg:text-2xl">{t('auth_password')}</label>
                 <Controller
                     name="password"
                     control={control}
-                    render={({ field: { onChange, value } }) => {
+                    render={({
+                        field: { onChange, value },
+                        fieldState: { error },
+                    }) => {
                         return (
-                            <input
-                                value={value}
-                                onChange={onChange}
-                                className="rounded-md border-2 border-solid border-black p-3 text-black"
-                                placeholder={t('auth_password')}
-                                type="password"
-                            />
+                            <>
+                                <input
+                                    value={value}
+                                    onChange={onChange}
+                                    className="rounded-md border-2 border-solid border-black p-3 text-black"
+                                    placeholder={t('auth_password')}
+                                    type="password"
+                                />
+                                {error?.message ? (
+                                    <span className="text-red-400">
+                                        {t(error.message)}
+                                    </span>
+                                ) : null}
+                            </>
                         )
                     }}
                 />
@@ -91,13 +101,13 @@ const SignUp = () => {
                 >
                     {t('sign-up-submit')}
                 </Button>
-                <div className="flex gap-8 pt-10">
-                    <p className="my-auto text-2xl lg:text-2xl">
+                <div className="flex justify-between pt-10 lg:w-[800px]">
+                    <p className="my-auto lg:text-2xl">
                         {t('sign-up-account-question')}
                     </p>
 
                     <Link to={`/${lang}/signin`}>
-                        <Button className="text-2xl lg:text-2xl">
+                        <Button className="text-xl lg:text-2xl">
                             {t('sign-up-login')}
                         </Button>
                     </Link>

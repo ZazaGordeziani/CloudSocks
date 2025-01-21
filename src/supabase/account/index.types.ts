@@ -1,4 +1,4 @@
-export type FillProfileInfoPayload = {
+export type ProfileFiledsValues = {
     id: string
     avatar_url: string
     full_name: string

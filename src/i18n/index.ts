@@ -22,8 +22,8 @@ import signUpEn from '@/i18n/en/pages/auth/sign-up/sign-up.json'
 import signUpKa from '@/i18n/ka/pages/auth/sign-up/sign-up.json'
 import accountInfoEn from '@/i18n/en/pages/account/profile/profile.json'
 import accountInfoKa from '@/i18n/ka/pages/account/profile/profile.json'
-// import signUpKa from '@/i18n/ka/pages/sign-up/sign-up.json'
-// import signUpEn from '@/i18n/en/pages/sign-up/sign-up.json'
+import authCommonKa from '@/i18n/ka/pages/auth/common.json'
+import authCommonEn from '@/i18n/en/pages/auth/common.json'
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -40,6 +40,7 @@ i18n.use(initReactI18next).init({
                 ...signInKa,
                 ...signUpKa,
                 ...accountInfoKa,
+                ...authCommonKa,
             },
         },
         en: {
@@ -55,6 +56,7 @@ i18n.use(initReactI18next).init({
                 ...signInEn,
                 ...signUpEn,
                 ...accountInfoEn,
+                ...authCommonEn,
             },
         },
     },

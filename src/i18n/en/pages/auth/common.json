@@ -1,0 +1,6 @@
+{
+    "auth_email": "E-Mail",
+    "auth_password": "Password",
+    "invalid_password": "Password must be at least 8 characters long",
+    "invalid_password_type": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+}

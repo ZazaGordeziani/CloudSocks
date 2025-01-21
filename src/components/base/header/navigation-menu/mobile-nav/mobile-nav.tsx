@@ -51,7 +51,7 @@ const MobileNav = () => {
                                 </Button>
                             ) : (
                                 <Link to="signIn" onClick={closeDrawer}>
-                                    <Button className="bg-white dark:bg-blue-700">
+                                    <Button className="bg-white text-black dark:bg-blue-700">
                                         <HeaderNavItem
                                             text={t('nav-item-sign-in')}
                                         />{' '}

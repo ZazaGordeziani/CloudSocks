@@ -1,4 +1,4 @@
-import SignUp from '@/pages/auth/sigh-up/components/sign-up'
+import SignUp from '@/pages/auth/sign-up/components/sign-up'
 
 const SignUpView = () => {
     return (

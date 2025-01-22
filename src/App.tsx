@@ -25,6 +25,12 @@ const LazyShippongReturnPage = lazy(
 )
 const LazySignUpPage = lazy(() => import('@/pages/auth/sign-up/view/index'))
 const LazyProfilePage = lazy(() => import('@/pages/account/view/profile/index'))
+const LazyPasswordUpdatePage = lazy(
+    () => import('@/pages/reset-password/update/index'),
+)
+const LazyPasswordResetPage = lazy(
+    () => import('@/pages/reset-password/reset/index'),
+)
 
 function App() {
     const setUser = useSetAtom(userAtom)
@@ -129,6 +135,26 @@ function App() {
                                     <UnAuthorizedGuard>
                                         <LazyProfilePage />
                                     </UnAuthorizedGuard>
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="reset"
+                            element={
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <AuthGuard>
+                                        <LazyPasswordResetPage />
+                                    </AuthGuard>
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="account/update-password"
+                            element={
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <AuthGuard>
+                                        <LazyPasswordUpdatePage />
+                                    </AuthGuard>
                                 </Suspense>
                             }
                         />

@@ -2,39 +2,42 @@ import { Button } from '@/components/ui/button'
 import { ProfileFiledsDefaultValues } from '@/pages/account/view/profile/default-values'
 import { ProfileFormSchema } from '@/pages/account/view/profile/schema'
 import { userAtom } from '@/store/auth'
-import { fillProfileInfo, getProfileInfo } from '@/supabase/account'
+import { fillProfileInfo } from '@/supabase/account'
 import { ProfileFiledsValues } from '@/supabase/account/index.types'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useAtomValue } from 'jotai'
-import { useState } from 'react'
+// import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQueryClient } from '@tanstack/react-query'
+import Spinner from '@/pages/common-components/spinner'
+import { useUserProfile } from '@/react-query/profile'
 
 const ProfleView = () => {
     const { t } = useTranslation()
     const user = useAtomValue(userAtom)
-    const [loading, setLoading] = useState(false)
     const { control, handleSubmit, setValue } = useForm<ProfileFiledsValues>({
         resolver: zodResolver(ProfileFormSchema),
         defaultValues: ProfileFiledsDefaultValues,
     })
     const queryClient = useQueryClient()
 
-    const { data: userInfo } = useQuery({
-        queryKey: ['profile', user?.user.id],
-        queryFn: async () => {
-            if (user?.user.id) {
-                const result = await getProfileInfo(user.user.id)
-                return result.data
-            }
-            return null
-        },
-        enabled: !!user?.user.id,
-    })
+    const { data: userInfo } = useUserProfile(user?.user.id ?? null)
 
-    // console.log(userInfo)
+    // const { data: userInfo } = useQuery({
+    //     queryKey: ['profile', user?.user.id],
+    //     queryFn: async () => {
+    //         if (user?.user.id) {
+    //             const result = await getProfileInfo(user.user.id)
+    //             return result.data
+    //         }
+    //         return null
+    //     },
+    //     enabled: !!user?.user.id,
+    //     staleTime: 1000 * 60 * 5,
+    // })
+
     if (userInfo && userInfo.length > 0) {
         const profileData = userInfo[0]
         setValue('avatar_url', profileData.avatar_url || '')
@@ -44,30 +47,20 @@ const ProfleView = () => {
         setValue('id', profileData.id || '')
     }
 
-    const { mutate: handleFillProfileInfo } = useMutation({
+    console.log('rerendering')
+
+    const { mutate: handleFillProfileInfo, isPending } = useMutation({
         mutationKey: ['fill-profile-info'],
         mutationFn: fillProfileInfo,
         onSuccess: () => {
-            // if (user?.user.id) {
             queryClient.invalidateQueries({
                 queryKey: ['profile', user?.user.id],
             })
-            // }
         },
     })
 
-    const onSubmit: SubmitHandler<ProfileFiledsValues> = async (
-        fieldValues,
-    ) => {
-        setLoading(true)
-        // console.log(loading)
-        try {
-            await handleFillProfileInfo(fieldValues)
-        } finally {
-            setTimeout(() => setLoading(false), 1000)
-        }
-        // console.log(loading)
-    }
+    const onSubmit: SubmitHandler<ProfileFiledsValues> = (fieldValues) =>
+        handleFillProfileInfo(fieldValues)
 
     return (
         <div className="flex h-full w-screen flex-col items-center justify-center gap-4">
@@ -177,9 +170,9 @@ const ProfleView = () => {
                 <Button
                     onClick={handleSubmit(onSubmit)}
                     className="text-xl tracking-wider lg:text-2xl"
-                    loading={loading}
+                    disabled={isPending}
                 >
-                    {t('account_update')}
+                    {isPending ? <Spinner /> : t('account_update')}
                 </Button>
             </div>
         </div>

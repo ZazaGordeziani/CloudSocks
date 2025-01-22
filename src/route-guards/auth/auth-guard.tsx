@@ -1,16 +1,21 @@
 import { userAtom } from '@/store/auth'
 import { useAtomValue } from 'jotai'
 import { PropsWithChildren } from 'react'
-import { Navigate, Outlet, useParams } from 'react-router-dom'
+import { Navigate, Outlet, useLocation, useParams } from 'react-router-dom'
 
-const UnAuthGuard: React.FC<PropsWithChildren> = ({ children }) => {
+const AuthGuard: React.FC<PropsWithChildren> = ({ children }) => {
     const user = useAtomValue(userAtom)
+    const location = useLocation()
+
     const { lang } = useParams()
+    const toNavigate =
+        location?.state?.from?.pathname + location?.state?.from?.search ||
+        `/${lang}/home`
 
     if (user) {
-        return <Navigate to={`/${lang}/home`} />
+        return <Navigate to={toNavigate} />
     }
     return children || <Outlet />
 }
 
-export default UnAuthGuard
+export default AuthGuard

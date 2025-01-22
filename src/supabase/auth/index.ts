@@ -1,10 +1,8 @@
 import { supabase } from '@/supabase'
 
 export type SignUpPayload = {
-    // name: string
     email: string
     password: string
-    // confirmPassword: string
 }
 
 export const register = (payload: SignUpPayload) => {

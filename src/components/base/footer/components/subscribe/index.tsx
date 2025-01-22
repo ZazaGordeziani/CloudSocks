@@ -20,7 +20,10 @@ const Subscribe = () => {
                 ref={emailInput}
                 className="h-10 text-center text-black"
             />
-            <Button onClick={handleSubscribe} className="font-bold">
+            <Button
+                onClick={handleSubscribe}
+                className="bg-white text-xl font-bold text-black lg:text-2xl"
+            >
                 {t('subscribe')}
             </Button>
         </div>

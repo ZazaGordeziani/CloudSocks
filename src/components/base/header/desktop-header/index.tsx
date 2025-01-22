@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom'
 export const DesktopHeader = () => {
     const { t } = useTranslation()
     const user = useAtomValue(userAtom)
+    // console.log(user)
     return (
         <div className={`${header()} `}>
             <HeaderTitle title={t('title-translation')} />

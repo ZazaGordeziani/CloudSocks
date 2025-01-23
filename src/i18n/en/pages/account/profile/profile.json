@@ -3,5 +3,11 @@
     "account_userName": "Username",
     "account_fullName": "Full Name",
     "account_phoneNumber": "Phone Number",
-    "account_avatarUrl": "Avatar URL"
+    "account_avatarUrl": "Avatar URL",
+    "invalid_full_name_max_length": "Fullname should not be more then 20 letters",
+    "invalid_full_name_min_length": "Fullname should consist at least 3 letters",
+    "invalid_username_max_length": "Username should not be more than 10 letters",
+    "invalid_username_min_length": "Username should consist at least 1 letter",
+    "invalid_username_type": "Space is now allowed in username",
+    "invalid_full_name_type": "Fullname should consist only letters"
 }

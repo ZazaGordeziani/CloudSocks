@@ -3,5 +3,11 @@
     "account_userName": "მომხმარებლის სახელი",
     "account_fullName": "სახელი/გვარი",
     "account_phoneNumber": "ტელეფონის ნომერი",
-    "account_avatarUrl": "ავატარი"
+    "account_avatarUrl": "ავატარი",
+    "invalid_full_name_max_length": "სახელი და გვარი არ უნდა აღემატებოდეს 30 ასოს",
+    "invalid_full_name_min_length": "სახელი და გვარი უნდა შედგებოდეს მინიმუმ 3 ასოსგან",
+    "invalid_username_max_length": "მომხმარებლის სახელი არ უნდა აღემატებოდეს 10 ასოს",
+    "invalid_username_min_length": "მომხმარებლის სახელი უნდა შედგებოდეს მინიმუმ 1 ასოსგან",
+    "invalid_username_type": "მომხმარებლის სახელში არ შეიძლება გამოტოვება (space)",
+    "invalid_full_name_type": "სახელი და გვარი უნდა შედგებოდეს მხოლოდ ასოებისგან"
 }

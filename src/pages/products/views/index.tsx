@@ -1,4 +1,4 @@
-import Products from '@/pages/products/components/products'
+import Products from '@/pages/products/components/product-create'
 
 const ProductsView = () => {
     return (

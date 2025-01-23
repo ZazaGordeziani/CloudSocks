@@ -1,7 +1,9 @@
 import { supabase } from '@/supabase'
-import { ProfileFiledsValues } from '@/supabase/account/index.types'
+import { ProfileFiledsValuesWithoutAvatar } from '@/supabase/account/index.types'
 
-export const fillProfileInfo = async (payload: ProfileFiledsValues) => {
+export const fillProfileInfo = async (
+    payload: ProfileFiledsValuesWithoutAvatar,
+) => {
     const { data, error } = await supabase
         .from('profiles')
         .upsert(payload)

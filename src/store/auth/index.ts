@@ -13,6 +13,6 @@ type AfterLogIn = {
     full_name?: string
     username?: string
     phone_number?: string
-    avatar_url?: string
+    avatar_url?: string | File
 }
 export const userAtom = atom<AfterLogIn | null>(null)

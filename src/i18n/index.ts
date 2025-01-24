@@ -24,6 +24,8 @@ import accountInfoEn from '@/i18n/en/pages/account/profile/profile.json'
 import accountInfoKa from '@/i18n/ka/pages/account/profile/profile.json'
 import authCommonKa from '@/i18n/ka/pages/auth/common.json'
 import authCommonEn from '@/i18n/en/pages/auth/common.json'
+import productsKa from '@/i18n/ka/pages/products/products.json'
+import productsEn from '@/i18n/en/pages/products/products.json'
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -41,6 +43,7 @@ i18n.use(initReactI18next).init({
                 ...signUpKa,
                 ...accountInfoKa,
                 ...authCommonKa,
+                ...productsKa,
             },
         },
         en: {
@@ -57,6 +60,7 @@ i18n.use(initReactI18next).init({
                 ...signUpEn,
                 ...accountInfoEn,
                 ...authCommonEn,
+                ...productsEn,
             },
         },
     },

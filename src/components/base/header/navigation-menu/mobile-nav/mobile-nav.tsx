@@ -37,7 +37,7 @@ const MobileNav = () => {
                                 <Link
                                     onClick={closeDrawer}
                                     to="profile"
-                                    className="w-fit rounded-3xl border-2 border-solid p-3 text-white"
+                                    className="w-fit rounded-3xl border-4 border-solid border-sky-300 bg-white p-3 text-main-blue"
                                 >
                                     {userProfile?.[0].username}
                                 </Link>
@@ -54,7 +54,7 @@ const MobileNav = () => {
                             {user ? (
                                 <Button
                                     onClick={logout}
-                                    className="bg-white dark:bg-blue-700"
+                                    className="bg-green-500 text-black hover:bg-green-600 dark:bg-blue-700"
                                 >
                                     <HeaderNavItem
                                         text={t('nav-item-sign-out')}
@@ -62,7 +62,7 @@ const MobileNav = () => {
                                 </Button>
                             ) : (
                                 <Link to="signIn" onClick={closeDrawer}>
-                                    <Button className="bg-white text-black dark:bg-blue-700">
+                                    <Button className="bg-green-500 text-black hover:bg-green-600 dark:bg-blue-700">
                                         <HeaderNavItem
                                             text={t('nav-item-sign-in')}
                                         />{' '}

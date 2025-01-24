@@ -22,7 +22,7 @@ const Subscribe = () => {
             />
             <Button
                 onClick={handleSubscribe}
-                className="bg-white text-xl font-bold text-black lg:text-2xl"
+                className="bg-white text-xl font-bold text-black hover:text-orange-600 lg:text-2xl"
             >
                 {t('subscribe')}
             </Button>

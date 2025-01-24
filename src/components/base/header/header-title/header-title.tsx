@@ -5,7 +5,7 @@ const HeaderTitle: React.FC<{ title: string }> = ({ title }) => {
     return (
         <Link to="/">
             <div className="">
-                <a className="text-3xl font-bold text-inherit text-white">
+                <a className="text-3xl font-bold text-inherit text-white hover:text-orange-500">
                     {title}
                 </a>
             </div>

@@ -12,12 +12,14 @@ import { useDebounce } from '@uidotdev/usehooks'
 import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const DisplayProduct = () => {
     // const { data: DisplayData } = useQuery<Product[]>({
     //     queryKey: ['products'],
     //     queryFn: getProductsList,
     // })
+    const { t } = useTranslation()
     const [searchParams, setSearchParams] = useSearchParams()
     const [products, setProducts] = useState<Product[]>()
 
@@ -75,7 +77,10 @@ const DisplayProduct = () => {
     return (
         <>
             <div className="flex w-full justify-center">
-                <div className="flex w-[284px] items-center gap-2 lg:w-[400px]">
+                <div className="flex w-[284px] flex-col gap-2 lg:w-[400px]">
+                    <label className="font-serif text-xl lg:text-3xl">
+                        {t('search_bar_heading')}
+                    </label>
                     <Controller
                         name="searchText"
                         control={control}
@@ -117,7 +122,7 @@ const DisplayProduct = () => {
                                 {data.color}
                             </div>
                             <Button className="text-xl tracking-wider lg:text-2xl">
-                                Add to Card
+                                {t('add_to_card')}{' '}
                             </Button>
                         </div>
                     )

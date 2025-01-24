@@ -10,8 +10,13 @@ const SignIn = () => {
     const { t } = useTranslation()
     const user = useAtomValue(userAtom)
     return user ? (
-        <Button onClick={logout} className="bg-blue-500 dark:bg-blue-700">
-            <HeaderNavItem text={t('nav-item-sign-out')} />
+        <Button
+            onClick={logout}
+            className="bg-blue-500 hover:bg-blue-600 dark:bg-blue-700"
+        >
+            <Link to="/home">
+                <HeaderNavItem text={t('nav-item-sign-out')} />
+            </Link>
         </Button>
     ) : (
         <Link to="signIn">

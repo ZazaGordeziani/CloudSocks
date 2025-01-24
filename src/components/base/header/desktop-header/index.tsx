@@ -21,7 +21,7 @@ export const DesktopHeader = () => {
                 <HeaderTitle title={t('title-translation')} />
                 {user ? (
                     <NavLink
-                        className="w-fit rounded-3xl border-2 border-solid p-2 text-2xl text-white"
+                        className="w-fit rounded-3xl border-4 border-solid border-sky-300 bg-white p-2 text-2xl text-main-blue hover:bg-orange-500"
                         to="profile"
                     >
                         {userProfile?.[0].username}

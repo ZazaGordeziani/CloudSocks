@@ -8,6 +8,7 @@ const ContactItem = () => {
             <p className="cursor-pointer text-sm lg:text-lg">
                 email:{' '}
                 <a
+                    className="hover:text-orange-500"
                     href="info@CloudSocks.com"
                     onClick={(e) => {
                         e.preventDefault()

@@ -15,16 +15,22 @@ export const DesktopHeader = () => {
     const user = useAtomValue(userAtom)
 
     const { data: userProfile } = useUserProfile(user?.user.id ?? null)
-    console.log(userProfile?.[0].username)
     return (
         <div className={`${header()} `}>
-            <HeaderTitle title={t('title-translation')} />
+            <div className="flex items-center gap-8">
+                <HeaderTitle title={t('title-translation')} />
+                {user ? (
+                    <NavLink
+                        className="w-fit rounded-3xl border-2 border-solid p-2 text-2xl text-white"
+                        to="profile"
+                    >
+                        {userProfile?.[0].username}
+                    </NavLink>
+                ) : null}
+            </div>
             <NavigationMenu />
 
             <div className="mr-4 flex items-center justify-between gap-4">
-                {user ? (
-                    <NavLink to="profile">{userProfile?.[0].username}</NavLink>
-                ) : null}
                 <SignIn />
                 <Langtoggle />
                 <ModeToggle />

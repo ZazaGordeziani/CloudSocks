@@ -12,6 +12,6 @@ export const ProfileFormSchema = z.object({
         .min(1, { message: 'invalid_username_min_length' })
         .regex(/^\S*$/, { message: 'invalid_username_type' }),
     phone_number: z.string(),
-    avatar_url: z.union([z.string(), z.instanceof(File)]),
+    // avatar_url: z.union([z.string(), z.instanceof(File)]),
     id: z.string(),
 })

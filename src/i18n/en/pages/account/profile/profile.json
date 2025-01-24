@@ -9,5 +9,6 @@
     "invalid_username_max_length": "Username should not be more than 10 letters",
     "invalid_username_min_length": "Username should consist at least 1 letter",
     "invalid_username_type": "Space is now allowed in username",
-    "invalid_full_name_type": "Fullname should consist only letters"
+    "invalid_full_name_type": "Fullname should consist only letters",
+    "username_taken": "Username is already take, please use another one"
 }

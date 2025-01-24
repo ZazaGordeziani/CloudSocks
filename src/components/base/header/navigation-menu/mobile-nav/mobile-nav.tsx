@@ -6,6 +6,7 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from '@/components/ui/drawer'
+import { useUserProfile } from '@/react-query/profile'
 import { userAtom } from '@/store/auth'
 import { logout } from '@/supabase/auth'
 import { useAtomValue } from 'jotai'
@@ -18,6 +19,7 @@ const MobileNav = () => {
     const { t } = useTranslation()
     const [isOpen, setIsOpen] = useState(false)
     const user = useAtomValue(userAtom)
+    const { data: userProfile } = useUserProfile(user?.user.id ?? null)
 
     const closeDrawer = () => {
         setIsOpen(false)
@@ -29,8 +31,17 @@ const MobileNav = () => {
                     <MenuIcon onClick={() => setIsOpen(true)} />
                 </DrawerTrigger>
                 <DrawerTitle>
-                    <DrawerContent className="bg-sky-300 dark:bg-gray-950">
+                    <DrawerContent className="bg-main-blue dark:bg-gray-950">
                         <div className="padding flex flex-col gap-6 px-10 py-28 text-3xl">
+                            {user ? (
+                                <Link
+                                    onClick={closeDrawer}
+                                    to="profile"
+                                    className="w-fit rounded-3xl border-2 border-solid p-3 text-white"
+                                >
+                                    {userProfile?.[0].username}
+                                </Link>
+                            ) : null}
                             <Link to="home" onClick={closeDrawer}>
                                 <HeaderNavItem text={t('nav-item-home')} />{' '}
                             </Link>

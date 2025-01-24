@@ -13,16 +13,18 @@ import { useTranslation } from 'react-i18next'
 import { useQueryClient } from '@tanstack/react-query'
 import Spinner from '@/pages/common-components/spinner'
 import { useUserProfile } from '@/react-query/profile'
-import { supabase } from '@/supabase'
+import { PostgrestError } from '@supabase/supabase-js'
+// import { supabase } from '@/supabase'
 // import { getProductsList } from '@/pages/products/components/product-display'
 // getProductsList
 const ProfleView = () => {
     const { t } = useTranslation()
     const user = useAtomValue(userAtom)
-    const { control, handleSubmit, setValue } = useForm<ProfileFiledsValues>({
-        resolver: zodResolver(ProfileFormSchema),
-        defaultValues: ProfileFiledsDefaultValues,
-    })
+    const { control, handleSubmit, setValue, setError } =
+        useForm<ProfileFiledsValues>({
+            resolver: zodResolver(ProfileFormSchema),
+            defaultValues: ProfileFiledsDefaultValues,
+        })
     const queryClient = useQueryClient()
 
     const { data: userInfo } = useUserProfile(user?.user.id ?? null)
@@ -42,7 +44,6 @@ const ProfleView = () => {
 
     if (userInfo && userInfo.length > 0) {
         const profileData = userInfo[0]
-        // setValue('avatar_url', null)
         setValue('full_name', profileData.full_name || '')
         setValue('phone_number', profileData.phone_number || '')
         setValue('username', profileData.username || '')
@@ -57,31 +58,37 @@ const ProfleView = () => {
                 queryKey: ['profile', user?.user.id],
             })
         },
+        onError: (error: PostgrestError) => {
+            if (error.message.includes('duplicate key value')) {
+                setError('username', {
+                    type: 'manual',
+                    message: 'username_taken',
+                })
+            }
+            console.log('Error occurred:', error)
+        },
     })
 
-    // `${user?.user.id}/${formValues.avatar_url.name ?? ''}`,
-
     const onSubmit: SubmitHandler<ProfileFiledsValues> = (formValues) => {
-        if (formValues.avatar_url && formValues.avatar_url instanceof File) {
-            supabase.storage
-                .from('avatar_images')
-                .upload(formValues.avatar_url.name ?? '', formValues.avatar_url)
-                .then((res) => {
-                    const avatarPath = res.data?.fullPath
-                    if (avatarPath) {
-                        supabase.from('profiles').update({
-                            avatar_url: avatarPath,
+        // if (formValues.avatar_url && formValues.avatar_url instanceof File) {
+        //     supabase.storage
+        //         .from('avatar_images')
+        //         .upload(formValues.avatar_url.name ?? '', formValues.avatar_url)
+        //         .then((res) => {
+        //             const avatarPath = res.data?.fullPath
+        //             if (avatarPath) {
+        //                 supabase.from('profiles').update({
+        //                     avatar_url: avatarPath,
 
-                            id: formValues.id,
-                            full_name: formValues.full_name,
-                            username: formValues.username,
-                            phone_number: formValues.phone_number,
-                        })
-                    }
-                })
-        }
+        //                     id: formValues.id,
+        //                     full_name: formValues.full_name,
+        //                     username: formValues.username,
+        //                     phone_number: formValues.phone_number,
+        //                 })
+        //             }
+        //         })
+        // }
         handleFillProfileInfo(formValues)
-        // console.log('Form Values :', formValues)
     }
     return (
         <form className="flex h-full w-screen flex-col items-center justify-center gap-4">
@@ -163,7 +170,7 @@ const ProfleView = () => {
                     }}
                 />
 
-                <label>{t('account_avatarUrl')}</label>
+                {/* <label>{t('account_avatarUrl')}</label>
                 <Controller
                     name="avatar_url"
                     control={control}
@@ -190,7 +197,7 @@ const ProfleView = () => {
                             </>
                         )
                     }}
-                />
+                /> */}
 
                 <Button
                     onClick={handleSubmit(onSubmit)}

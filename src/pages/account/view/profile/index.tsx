@@ -14,7 +14,8 @@ import { useQueryClient } from '@tanstack/react-query'
 import Spinner from '@/pages/common-components/spinner'
 import { useUserProfile } from '@/react-query/profile'
 import { supabase } from '@/supabase'
-
+// import { getProductsList } from '@/pages/products/components/product-display'
+// getProductsList
 const ProfleView = () => {
     const { t } = useTranslation()
     const user = useAtomValue(userAtom)

@@ -82,7 +82,7 @@ const DisplayProduct = () => {
                         render={({ field }) => (
                             <input
                                 {...field}
-                                className="w-[210px] rounded-md border-2 border-solid border-black p-3 text-black lg:w-[400px]"
+                                className="w-full rounded-md border-2 border-solid border-black p-3 text-black"
                                 placeholder="Enter Search Text"
                                 required
                             />

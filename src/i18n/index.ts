@@ -26,6 +26,8 @@ import authCommonKa from '@/i18n/ka/pages/auth/common.json'
 import authCommonEn from '@/i18n/en/pages/auth/common.json'
 import productsKa from '@/i18n/ka/pages/products/products.json'
 import productsEn from '@/i18n/en/pages/products/products.json'
+import cartKa from '@/i18n/ka/pages/cart/cart.json'
+import cartEn from '@/i18n/en/pages/cart/cart.json'
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -44,6 +46,7 @@ i18n.use(initReactI18next).init({
                 ...accountInfoKa,
                 ...authCommonKa,
                 ...productsKa,
+                ...cartKa,
             },
         },
         en: {
@@ -61,6 +64,7 @@ i18n.use(initReactI18next).init({
                 ...accountInfoEn,
                 ...authCommonEn,
                 ...productsEn,
+                ...cartEn,
             },
         },
     },

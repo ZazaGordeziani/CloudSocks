@@ -1,3 +1,4 @@
+import CartSign from '@/components/base/header/cart-sign'
 import HeaderTitle from '@/components/base/header/header-title/header-title'
 import { header } from '@/components/base/header/header.style'
 import Langtoggle from '@/components/base/header/lang-toggle/lang-toggle'
@@ -21,7 +22,11 @@ export const DesktopHeader = () => {
                 <HeaderTitle title={t('title-translation')} />
                 {user ? (
                     <NavLink
-                        className="w-fit rounded-3xl border-4 border-solid border-sky-300 bg-white p-2 text-2xl text-main-blue hover:bg-orange-500"
+                        className={({ isActive }) =>
+                            `w-fit rounded-3xl border-4 border-solid border-sky-300 bg-white p-2 text-2xl text-main-blue hover:bg-orange-500 ${
+                                isActive ? 'bg-orange-500' : ''
+                            }`
+                        }
                         to="profile"
                     >
                         {userProfile?.[0].username}
@@ -31,6 +36,7 @@ export const DesktopHeader = () => {
             <NavigationMenu />
 
             <div className="mr-4 flex items-center justify-between gap-4">
+                <CartSign />
                 <SignIn />
                 <Langtoggle />
                 <ModeToggle />

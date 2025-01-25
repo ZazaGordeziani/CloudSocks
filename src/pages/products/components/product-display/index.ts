@@ -6,6 +6,7 @@ export interface Product {
     created_at: string
     image_url: string
     user_id: string
+    quantity: number
 }
 
 export type ProductFilterFormValues = {

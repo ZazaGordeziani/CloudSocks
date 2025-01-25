@@ -92,7 +92,7 @@ const ProfleView = () => {
     }
     return (
         <form className="flex h-full w-screen flex-col items-center justify-center gap-4">
-            <div className="flex flex-col gap-4 rounded-lg border-2 border-solid border-black p-10 dark:border-white lg:max-w-[400px]">
+            <div className="flex flex-col gap-4 rounded-lg border-2 border-solid border-orange-500 p-10 lg:max-w-[400px]">
                 <label>{t('account_userName')}</label>
                 <Controller
                     name="username"
@@ -106,7 +106,7 @@ const ProfleView = () => {
                                 <input
                                     onChange={onChange}
                                     value={value}
-                                    className="max-w-[200px] rounded-md border-2 border-solid border-black p-3 text-black sm:max-w-[400px]"
+                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-black sm:max-w-[400px]"
                                     placeholder={t('account_userName')}
                                 />
                                 {error?.message ? (
@@ -132,7 +132,7 @@ const ProfleView = () => {
                                 <input
                                     onChange={onChange}
                                     value={value}
-                                    className="max-w-[200px] rounded-md border-2 border-solid border-black p-3 text-black sm:max-w-[400px]"
+                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-black sm:max-w-[400px]"
                                     placeholder={t('account_fullName')}
                                 />
                                 {error?.message ? (
@@ -157,7 +157,7 @@ const ProfleView = () => {
                                 <input
                                     onChange={onChange}
                                     value={value}
-                                    className="max-w-[200px] rounded-md border-2 border-solid border-black p-3 text-black sm:max-w-[400px]"
+                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-black sm:max-w-[400px]"
                                     placeholder={t('account_phoneNumber')}
                                 />
                                 {error?.message ? (
@@ -201,7 +201,7 @@ const ProfleView = () => {
 
                 <Button
                     onClick={handleSubmit(onSubmit)}
-                    className="text-xl tracking-wider lg:text-2xl"
+                    className="bg-orange-500 text-xl tracking-wider lg:text-2xl"
                     disabled={isPending}
                 >
                     {isPending ? <Spinner /> : t('account_update')}

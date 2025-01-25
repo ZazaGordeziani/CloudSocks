@@ -4,7 +4,7 @@ import { supabase } from '@/supabase'
 import { useAtomValue } from 'jotai'
 import { Controller, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 type ProductsListCreateValues = {
     type: string
@@ -21,7 +21,7 @@ const ProductsListDefaultValues = {
 const ProductsCreate = () => {
     const user = useAtomValue(userAtom)
     const { t } = useTranslation()
-
+    const [buttonBgColor, setButtonBgColor] = useState(false)
     const { control, handleSubmit, watch, reset } =
         useForm<ProductsListCreateValues>({
             defaultValues: ProductsListDefaultValues,
@@ -43,22 +43,24 @@ const ProductsCreate = () => {
                     productValues.image_file,
                 )
                 .then((res) => {
-                    return supabase
-                        .from('products')
-                        .insert({
-                            type: productValues.type,
-                            color: productValues.color,
-                            image_url: res.data?.fullPath,
-                            user_id: user?.user?.id,
-                        })
-                        .then((res) => {
-                            console.log('Successfully created product', res)
-                        })
+                    return supabase.from('products').insert({
+                        type: productValues.type,
+                        color: productValues.color,
+                        image_url: res.data?.fullPath,
+                        user_id: user?.user?.id,
+                    })
+                    // .then((res) => {
+                    //     console.log('Successfully created product', res)
+                    // })
                     // console.log('upload file response ', res)
                 })
 
-            console.log('Product values :', productValues)
+            // console.log('Product values :', productValues)
         }
+        setButtonBgColor(true)
+        setTimeout(() => {
+            setButtonBgColor(false)
+        }, 500)
     }
     const fileInputRef = useRef<HTMLInputElement | null>(null)
 
@@ -166,7 +168,7 @@ const ProductsCreate = () => {
 
                 <Button
                     onClick={handleSubmit(onSubmit)}
-                    className="text-xl tracking-wider lg:text-2xl"
+                    className={`text-xl tracking-wider lg:text-2xl ${buttonBgColor ? 'bg-green-500' : ''}`}
                 >
                     Add Product
                 </Button>

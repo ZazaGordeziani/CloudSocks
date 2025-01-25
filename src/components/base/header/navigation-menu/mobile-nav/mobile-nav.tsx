@@ -1,3 +1,4 @@
+import CartSign from '@/components/base/header/cart-sign'
 import { HeaderNavItem } from '@/components/base/header/header-nav-item/header-nav-item'
 import { Button } from '@/components/ui/button'
 import {
@@ -50,6 +51,13 @@ const MobileNav = () => {
                             </Link>
                             <Link to="about" onClick={closeDrawer}>
                                 <HeaderNavItem text={t('nav-item-about')} />{' '}
+                            </Link>
+                            <Link
+                                className="w-11"
+                                to="cart"
+                                onClick={closeDrawer}
+                            >
+                                <CartSign />
                             </Link>
                             {user ? (
                                 <Button

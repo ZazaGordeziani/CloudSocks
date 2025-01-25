@@ -6,7 +6,7 @@ import { useAtomValue } from 'jotai'
 
 const ProductsView = () => {
     const user = useAtomValue(userAtom)
-    console.log(user?.user.email)
+    // console.log(user?.user.email)
     return (
         <div className="flex h-full w-screen flex-col justify-center gap-12">
             {user?.user.email === 'zg.gordeziani@gmail.com' ? (

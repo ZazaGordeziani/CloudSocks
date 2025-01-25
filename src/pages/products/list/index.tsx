@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useCart } from '@/hooks/use-cart'
 
 const DisplayProduct = () => {
     // const { data: DisplayData } = useQuery<Product[]>({
@@ -22,7 +23,10 @@ const DisplayProduct = () => {
     const { t } = useTranslation()
     const [searchParams, setSearchParams] = useSearchParams()
     const [products, setProducts] = useState<Product[]>()
-
+    const [bgColorProductId, setBgColorProductId] = useState<number | null>(
+        null,
+    )
+    const { addToCart } = useCart()
     const parsedQueryParams = {
         ...productFilterFromDefaultValues,
         ...qs.parse(searchParams.toString()),
@@ -74,6 +78,13 @@ const DisplayProduct = () => {
         }
         fetchProducts()
     }, [debouncedSearchText, setSearchParams])
+    const handleAddToCart = (product: Product) => {
+        addToCart(product)
+        setBgColorProductId(product.id)
+        setTimeout(() => {
+            setBgColorProductId(null)
+        }, 500)
+    }
     return (
         <>
             <div className="flex w-full justify-center">
@@ -88,7 +99,9 @@ const DisplayProduct = () => {
                             <input
                                 {...field}
                                 className="w-full rounded-md border-2 border-solid border-black p-3 text-black"
-                                placeholder="Enter Search Text"
+                                placeholder={t(
+                                    'product_search_bar_placeholder',
+                                )}
                                 required
                             />
                         )}
@@ -121,7 +134,13 @@ const DisplayProduct = () => {
                                 <span className="pr-2">Color:</span>{' '}
                                 {data.color}
                             </div>
-                            <Button className="text-xl tracking-wider lg:text-2xl">
+                            <Button
+                                className={`text-xl tracking-wider lg:text-2xl ${bgColorProductId === data.id ? 'bg-green-500' : ''}`}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    handleAddToCart(data)
+                                }}
+                            >
                                 {t('add_to_card')}{' '}
                             </Button>
                         </div>

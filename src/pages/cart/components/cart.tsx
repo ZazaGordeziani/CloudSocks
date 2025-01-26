@@ -18,7 +18,6 @@ const CartPage = () => {
     const user = useAtomValue(userAtom)
     const { lang } = useParams()
     const [isButtonClicked, setIsButtonClicked] = useState(false)
-    const [showLoginMessage, setShowLoginMessage] = useState(false)
 
     const { cart, removeFromCart, getProductPrice } = useCart()
     const [t] = useTranslation()
@@ -45,10 +44,6 @@ const CartPage = () => {
     })
 
     const placeOrder = () => {
-        if (!user) {
-            setShowLoginMessage(true)
-            return
-        }
         setIsButtonClicked(true)
         const orderPayload: OrdersListValues = {
             user_id: user!.user.id,
@@ -98,6 +93,7 @@ const CartPage = () => {
                             <div className="flex flex-col gap-y-5 text-xl md:w-[200px] md:text-2xl">
                                 <span>Type: {product.type}</span>
                                 <span>Color: {product.color}</span>{' '}
+                                <span>Price: ${getProductPrice(product)}</span>{' '}
                             </div>
                             <div className="p-y-5 flex flex-col gap-y-5">
                                 <span className="text-lg font-semibold">
@@ -109,31 +105,40 @@ const CartPage = () => {
                                 >
                                     X
                                 </Button>
-                                <span>Price: ${getProductPrice(product)}</span>{' '}
                             </div>
                         </div>
                     ))}
+                    {!user && (
+                        <p className="max-w-[300px] text-center text-xl text-red-500">
+                            {' '}
+                            {t('cart_log_in_to_buy_items')}
+                        </p>
+                    )}
                     <div className="flex items-center justify-between text-xl font-bold md:text-2xl">
                         <p>
                             {t('cart_total_price')}: <span>${totalPrice}</span>
                         </p>
                         {/* <div> */}
-                        <Link to={`/${lang}/endingPage`}>
-                            <Button
-                                className={`text-xl md:text-2xl ${isButtonClicked ? 'bg-green-500' : ''}`}
-                                onClick={placeOrder}
-                            >
-                                {t('cart_make_order')}{' '}
-                            </Button>
-                        </Link>
-
-                        {/* </div> */}
+                        {user ? (
+                            <Link to={`/${lang}/endingPage`}>
+                                <Button
+                                    className={`text-xl md:text-2xl ${isButtonClicked ? 'bg-green-500' : ''}`}
+                                    onClick={placeOrder}
+                                >
+                                    {t('cart_make_order')}{' '}
+                                </Button>
+                            </Link>
+                        ) : (
+                            <Link to={`/${lang}/signIn`}>
+                                <Button
+                                    className={`text-xl md:text-2xl ${isButtonClicked ? 'bg-green-500' : ''}`}
+                                    onClick={placeOrder}
+                                >
+                                    {t('sign-up-login')}
+                                </Button>
+                            </Link>
+                        )}
                     </div>
-                    {showLoginMessage && !user && (
-                        <p className="mt-2 flex w-full justify-center text-xl text-red-500 md:text-3xl">
-                            {t('cart_log_in_to_buy_items')}
-                        </p>
-                    )}
                 </div>
             )}
         </div>

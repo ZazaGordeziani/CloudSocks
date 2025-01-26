@@ -30,6 +30,8 @@ import cartKa from '@/i18n/ka/pages/cart/cart.json'
 import cartEn from '@/i18n/en/pages/cart/cart.json'
 import orderKa from '@/i18n/ka/pages/orders/orders.json'
 import orderEn from '@/i18n/en/pages/orders/orders.json'
+import endingKa from '@/i18n/ka/pages/ending/ending.json'
+import endingEn from '@/i18n/en/pages/ending/ending.json'
 i18n.use(initReactI18next).init({
     resources: {
         ka: {
@@ -49,6 +51,7 @@ i18n.use(initReactI18next).init({
                 ...productsKa,
                 ...cartKa,
                 ...orderKa,
+                ...endingKa,
             },
         },
         en: {
@@ -68,6 +71,7 @@ i18n.use(initReactI18next).init({
                 ...productsEn,
                 ...cartEn,
                 ...orderEn,
+                ...endingEn,
             },
         },
     },

@@ -7,7 +7,7 @@ export const fillProfileInfo = async (payload: ProfileFiledsValues) => {
         .upsert(payload)
         .throwOnError()
     if (error) {
-        console.log('can not update profile')
+        // console.log('can not update profile')
         throw error
     }
     return data

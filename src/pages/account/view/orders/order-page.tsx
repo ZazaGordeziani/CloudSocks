@@ -19,9 +19,7 @@ const OrdersPage = () => {
         queryKey: ['orders', userId],
         queryFn: async () => {
             if (userId) {
-                console.log('Query function is being called')
                 const response = await getOrderInfo(userId)
-                console.log('Fetched Orders:', response)
                 return response
             }
             return []

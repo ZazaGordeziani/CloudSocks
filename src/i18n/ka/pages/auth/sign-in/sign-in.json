@@ -1,5 +1,6 @@
 {
     "sign-up-submit": "რეგისტრაცია",
     "sign-up-account-question": "გაქვთ ანგარიში?",
-    "sign-up-login": "შესვლა"
+    "sign-up-login": "შესვლა",
+    "sign_in_wrong_credentials": "შეყვანილი მონაცემები არასწორია"
 }

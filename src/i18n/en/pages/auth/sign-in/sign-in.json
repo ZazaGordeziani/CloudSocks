@@ -1,5 +1,6 @@
 {
     "sign-in-submit": "Submit",
     "sign-in-account-question": "Do not have an account?",
-    "sign-in-register": "Sign Up"
+    "sign-in-register": "Sign Up",
+    "sign_in_wrong_credentials": "Invalid Login Credentials"
 }

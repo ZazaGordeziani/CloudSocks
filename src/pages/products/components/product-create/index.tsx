@@ -43,16 +43,17 @@ const ProductsCreate = () => {
                     productValues.image_file,
                 )
                 .then((res) => {
-                    return supabase.from('products').insert({
-                        type: productValues.type,
-                        color: productValues.color,
-                        image_url: res.data?.fullPath,
-                        user_id: user?.user?.id,
-                    })
-                    // .then((res) => {
-                    //     console.log('Successfully created product', res)
-                    // })
-                    // console.log('upload file response ', res)
+                    return supabase
+                        .from('products')
+                        .insert({
+                            type: productValues.type,
+                            color: productValues.color,
+                            image_url: res.data?.fullPath,
+                            user_id: user?.user?.id,
+                        })
+                        .then(() => {
+                            window.location.reload()
+                        })
                 })
 
             // console.log('Product values :', productValues)

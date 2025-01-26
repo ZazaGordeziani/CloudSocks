@@ -19,6 +19,7 @@ const SignIn = () => {
     const navigate = useNavigate()
     const { t } = useTranslation()
     const [showPassword, setShowPassword] = useState<boolean>(false)
+    const [loginError, setLoginError] = useState<string | null>(null)
 
     const toNavigate =
         location?.state?.from?.pathname + location?.state?.from?.search ||
@@ -33,8 +34,9 @@ const SignIn = () => {
         onSuccess: () => {
             navigate(toNavigate)
         },
-        onError: (error) => {
-            console.error('Error during login:', error.message)
+        onError: () => {
+            // console.error('Error during login:', error.message)
+            setLoginError(t('sign_in_wrong_credentials'))
         },
     })
 
@@ -126,7 +128,9 @@ const SignIn = () => {
                         )
                     }}
                 />
-
+                {loginError && (
+                    <div className="mt-2 text-red-500">{loginError}</div>
+                )}
                 <Button
                     onClick={handleSubmit(onSubmit)}
                     className="text-xl tracking-wider lg:text-2xl"
@@ -146,9 +150,9 @@ const SignIn = () => {
                         </Button>
                     </Link>
                 </div>
-                <div>
+                {/* <div>
                     <Link to={`/${lang}/reset`}>Forgot password</Link>
-                </div>
+                </div> */}
             </div>
         </form>
     )

@@ -12,9 +12,11 @@ import { useMediaQuery } from '@uidotdev/usehooks'
 import { useAtomValue } from 'jotai'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link, useParams } from 'react-router-dom'
 
 const CartPage = () => {
     const user = useAtomValue(userAtom)
+    const { lang } = useParams()
     const [isButtonClicked, setIsButtonClicked] = useState(false)
     const [showLoginMessage, setShowLoginMessage] = useState(false)
 
@@ -116,18 +118,20 @@ const CartPage = () => {
                             {t('cart_total_price')}: <span>${totalPrice}</span>
                         </p>
                         {/* <div> */}
-                        <Button
-                            className={`text-xl md:text-2xl ${isButtonClicked ? 'bg-green-500' : ''}`}
-                            onClick={placeOrder}
-                        >
-                            {t('cart_make_order')}{' '}
-                        </Button>
+                        <Link to={`/${lang}/endingPage`}>
+                            <Button
+                                className={`text-xl md:text-2xl ${isButtonClicked ? 'bg-green-500' : ''}`}
+                                onClick={placeOrder}
+                            >
+                                {t('cart_make_order')}{' '}
+                            </Button>
+                        </Link>
 
                         {/* </div> */}
                     </div>
                     {showLoginMessage && !user && (
                         <p className="mt-2 flex w-full justify-center text-xl text-red-500 md:text-3xl">
-                            {t('log_in_to_buy_items')}
+                            {t('cart_log_in_to_buy_items')}
                         </p>
                     )}
                 </div>

@@ -1,5 +1,6 @@
 {
     "search_bar_heading": "Search Product...",
     "product_search_bar_placeholder": "Enter Search Text",
-    "add_to_card": "Add to Card"
+    "add_to_card": "Add to Card",
+    "delete_product": "Delete Product"
 }

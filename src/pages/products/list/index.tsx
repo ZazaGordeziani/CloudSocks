@@ -14,12 +14,17 @@ import { Controller, useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useCart } from '@/hooks/use-cart'
+import { deleteProduct } from '@/supabase/products'
+import { useMutation } from '@tanstack/react-query'
+import { useAtomValue } from 'jotai'
+import { userAtom } from '@/store/auth'
 
 const DisplayProduct = () => {
     // const { data: DisplayData } = useQuery<Product[]>({
     //     queryKey: ['products'],
     //     queryFn: getProductsList,
     // })
+    const user = useAtomValue(userAtom)
     const { t } = useTranslation()
     const [searchParams, setSearchParams] = useSearchParams()
     const [products, setProducts] = useState<Product[]>()
@@ -85,6 +90,22 @@ const DisplayProduct = () => {
             setBgColorProductId(null)
         }, 500)
     }
+
+    const deleteMutation = useMutation({
+        mutationKey: ['deleteProduct'],
+        mutationFn: (productId: number) => deleteProduct(productId),
+        onSuccess: async () => {
+            const restProducts = await getProductsList()
+            setProducts(restProducts)
+        },
+        onError: (error) => {
+            console.error('Error deleting product:', error)
+        },
+    })
+
+    const handleDelete = (productId: number) => {
+        deleteMutation.mutate(productId)
+    }
     return (
         <>
             <div className="flex w-full justify-center">
@@ -143,6 +164,18 @@ const DisplayProduct = () => {
                             >
                                 {t('add_to_card')}{' '}
                             </Button>
+
+                            {user?.user.email === 'zg.gordeziani@gmail.com' ? (
+                                <Button
+                                    className="mt-2 bg-red-500 text-xl text-white hover:bg-red-700"
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        handleDelete(data.id)
+                                    }}
+                                >
+                                    {t('delete_product')}
+                                </Button>
+                            ) : null}
                         </div>
                     )
                 })}

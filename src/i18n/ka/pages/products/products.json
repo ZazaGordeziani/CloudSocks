@@ -1,5 +1,6 @@
 {
     "search_bar_heading": "მოძებნე პროდუქტი",
     "product_search_bar_placeholder": "შეიყვანეთ საძიებო სიტყვა",
-    "add_to_card": "კალათაში დამატება"
+    "add_to_card": "კალათაში დამატება",
+    "delete_product": "პროდუქტის წაშლა"
 }

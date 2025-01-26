@@ -8,7 +8,7 @@ export const fillOrderInfo = async (payload: OrdersListValues) => {
         .select('*')
         .throwOnError()
     if (error) {
-        console.log('unable to save order')
+        // console.log('unable to save order')
         throw error
     }
     return data

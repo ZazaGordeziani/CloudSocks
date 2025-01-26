@@ -111,9 +111,9 @@ const SignUp = () => {
                                         className="absolute right-3 top-1/2 -translate-y-1/2 transform text-black"
                                     >
                                         {showPassword ? (
-                                            <FaEyeSlash />
-                                        ) : (
                                             <FaEye />
+                                        ) : (
+                                            <FaEyeSlash />
                                         )}
                                     </button>
                                 </div>

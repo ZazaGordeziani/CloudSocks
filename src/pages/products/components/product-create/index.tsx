@@ -55,8 +55,6 @@ const ProductsCreate = () => {
                             window.location.reload()
                         })
                 })
-
-            // console.log('Product values :', productValues)
         }
         setButtonBgColor(true)
         setTimeout(() => {
@@ -107,7 +105,6 @@ const ProductsCreate = () => {
                         field: { onChange, value },
                         fieldState: { error },
                     }) => {
-                        // console.log('Full name error:', error)
                         return (
                             <>
                                 <input

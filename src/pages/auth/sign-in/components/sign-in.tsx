@@ -40,17 +40,6 @@ const SignIn = () => {
         },
     })
 
-    // const { mutate: handleSignIn } = useMutation({
-    //     mutationKey: ['login'],
-    //     mutationFn: login,
-    //     onSuccess: () => {
-    //         navigate(`/${lang}/home`)
-    //     },
-    //     onError: (error) => {
-    //         console.error('Error during login:', error.message)
-    //     },
-    // })
-
     const onSubmit: SubmitHandler<SignInFormValues> = (fieldValues) => {
         handleSignIn(fieldValues)
     }
@@ -150,9 +139,6 @@ const SignIn = () => {
                         </Button>
                     </Link>
                 </div>
-                {/* <div>
-                    <Link to={`/${lang}/reset`}>Forgot password</Link>
-                </div> */}
             </div>
         </form>
     )

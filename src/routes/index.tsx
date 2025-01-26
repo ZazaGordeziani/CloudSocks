@@ -19,12 +19,7 @@ const LazyShippingReturnPage = lazy(
 )
 const LazySignUpPage = lazy(() => import('@/pages/auth/sign-up/view/index'))
 const LazyProfilePage = lazy(() => import('@/pages/account/view/profile/index'))
-// const LazyPasswordUpdatePage = lazy(
-//     () => import('@/pages/reset-password/update/index'),
-// )
-// const LazyPasswordResetPage = lazy(
-//     () => import('@/pages/reset-password/reset/index'),
-// )
+
 const LazyCartPage = lazy(() => import('@/pages/cart/view/index'))
 const LazyOrdersPage = lazy(
     () => import('@/pages/account/view/orders/order-page'),
@@ -121,26 +116,7 @@ export const AppRoutes = () => {
                         </Suspense>
                     }
                 />
-                {/* <Route
-            path="reset"
-            element={
-                <Suspense fallback={<div>Loading...</div>}>
-                    <AuthGuard>
-                        <LazyPasswordResetPage />
-                    </AuthGuard>
-                </Suspense>
-            }
-        />
-        <Route
-            path="account/update-password"
-            element={
-                <Suspense fallback={<div>Loading...</div>}>
-                    <AuthGuard>
-                        <LazyPasswordUpdatePage />
-                    </AuthGuard>
-                </Suspense>
-            }
-        /> */}
+
                 <Route
                     path="cart"
                     element={

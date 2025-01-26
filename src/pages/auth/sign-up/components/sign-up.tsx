@@ -1,12 +1,8 @@
-// import { useState } from 'react'
-// import { useMutation } from '@tanstack/react-query'
-// import { register } from '@/supabase/auth'
 import { Button } from '@/components/ui/button'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-// import { useMutation } from '@tanstack/react-query'
-// import { register } from '@/supabase/auth'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SignUpFormSchema } from '@/pages/auth/sign-up/components/schema'
 import { useRegister } from '@/react-query/auth'
@@ -41,14 +37,6 @@ const SignUp = () => {
             console.error('Error during registration:', error.message)
         },
     })
-
-    // const { mutate: handleRegister } = useMutation({
-    //     mutationKey: ['register'],
-    //     mutationFn: register,
-    //     onSuccess: () => {
-    //         navigate(`/${lang}/signin`)
-    //     },
-    // })
 
     const onSubmit: SubmitHandler<SignUpFormValues> = (fieldValues) => {
         handleRegister(fieldValues)

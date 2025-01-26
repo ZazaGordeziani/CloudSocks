@@ -86,10 +86,13 @@ const OrdersPage = () => {
                             const itemImageUrl = item.image_url
                                 ? `${import.meta.env.VITE_SUPABASE_PRODUCT_IMAGES_STORAGE_URL}/${item.image_url}`
                                 : ''
+                            const itemKey =
+                                item.id ||
+                                `${order.id}-${item.type}-${item.color}`
 
                             return (
                                 <div
-                                    key={item.id}
+                                    key={itemKey}
                                     className="flex w-[300px] flex-col items-center gap-4 rounded-lg border-2 border-solid border-orange-500 p-6 dark:border-white dark:bg-main-blue sm:w-[400px]"
                                 >
                                     <p className="text-lg text-main-blue dark:text-white sm:text-xl">

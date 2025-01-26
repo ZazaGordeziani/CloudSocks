@@ -20,10 +20,6 @@ import { useAtomValue } from 'jotai'
 import { userAtom } from '@/store/auth'
 
 const DisplayProduct = () => {
-    // const { data: DisplayData } = useQuery<Product[]>({
-    //     queryKey: ['products'],
-    //     queryFn: getProductsList,
-    // })
     const user = useAtomValue(userAtom)
     const { t } = useTranslation()
     const [searchParams, setSearchParams] = useSearchParams()
@@ -43,22 +39,6 @@ const DisplayProduct = () => {
     //to watch the search text and fetch product according to it
     const searchText = watch('searchText')
     const debouncedSearchText = useDebounce(searchText, 1000)
-
-    // const onSubmit = async ({ searchText }: ProductFilterFormValues) => {
-    //     const productsList = await getProductsListInFilter(searchText)
-    //     setProducts(productsList)
-    //     setSearchParams(
-    //         qs.stringify(
-    //             { searchText },
-    //             {
-    //                 skipNulls: true,
-    //                 filter: (_, value) => {
-    //                     return value || undefined
-    //                 },
-    //             },
-    //         ),
-    //     )
-    // }
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -127,7 +107,6 @@ const DisplayProduct = () => {
                             />
                         )}
                     />
-                    {/* <Button onClick={handleSubmit(onSubmit)}>Filter</Button> */}
                 </div>
             </div>
             <form className="flex h-full w-screen flex-col items-center justify-center gap-10">

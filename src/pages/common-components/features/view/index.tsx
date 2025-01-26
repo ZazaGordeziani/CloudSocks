@@ -1,7 +1,4 @@
 import DataDisplay from '@/pages/common-components/features/components/card/card'
-// import Card from '@/pages/about/components/features/components/card/card'
-
-// import DataDisplay from '@/pages/about/components/features/components/card/card'
 
 const CloudSocksFeatures = () => {
     return (

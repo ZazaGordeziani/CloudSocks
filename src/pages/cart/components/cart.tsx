@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next'
 const CartPage = () => {
     const user = useAtomValue(userAtom)
     const [isButtonClicked, setIsButtonClicked] = useState(false)
+    const [showLoginMessage, setShowLoginMessage] = useState(false)
 
     const { cart, removeFromCart, getProductPrice } = useCart()
     const [t] = useTranslation()
@@ -43,7 +44,7 @@ const CartPage = () => {
 
     const placeOrder = () => {
         if (!user) {
-            alert('Please log in to place an order.')
+            setShowLoginMessage(true)
             return
         }
         setIsButtonClicked(true)
@@ -114,13 +115,21 @@ const CartPage = () => {
                         <p>
                             {t('cart_total_price')}: <span>${totalPrice}</span>
                         </p>
+                        {/* <div> */}
                         <Button
                             className={`text-xl md:text-2xl ${isButtonClicked ? 'bg-green-500' : ''}`}
                             onClick={placeOrder}
                         >
                             {t('cart_make_order')}{' '}
                         </Button>
+
+                        {/* </div> */}
                     </div>
+                    {showLoginMessage && !user && (
+                        <p className="mt-2 flex w-full justify-center text-xl text-red-500 md:text-3xl">
+                            {t('log_in_to_buy_items')}
+                        </p>
+                    )}
                 </div>
             )}
         </div>

@@ -3,5 +3,6 @@
     "empty_cart": "თქვენი კალათა ცარიელია!",
     "cart_total_price": "ჯამი",
     "cart_make_order": "შეუკვეთეთ",
-    "cart_quantity": "რაოდენობა"
+    "cart_quantity": "რაოდენობა",
+    "cart_log_in_to_buy_items": "ნივთის შეძენისთვის, გაიარეთ ავტორიზაცია"
 }

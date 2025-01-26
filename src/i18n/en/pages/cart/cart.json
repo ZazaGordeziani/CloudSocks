@@ -3,5 +3,6 @@
     "cart_total_price": "Total Price",
     "cart_make_order": "Make Order",
     "cart_quantity": "Quantity",
-    "empty_cart": "Your Card is Empty!"
+    "empty_cart": "Your Card is Empty!",
+    "cart_log_in_to_buy_items": "Log in to place an order"
 }

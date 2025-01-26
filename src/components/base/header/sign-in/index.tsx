@@ -20,7 +20,7 @@ const SignIn = () => {
         </Button>
     ) : (
         <Link to="signIn">
-            <Button className="bg-blue-500 dark:bg-blue-700">
+            <Button className="bg-blue-500 hover:text-orange-500 dark:bg-blue-700 dark:text-white">
                 <HeaderNavItem text={t('nav-item-sign-in')} />{' '}
             </Button>
         </Link>

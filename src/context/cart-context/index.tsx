@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from 'react'
+import { createContext, useState, ReactNode, useEffect } from 'react'
 
 export interface Product {
     id: number
@@ -27,6 +27,13 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     const initialCart = storedCart ? JSON.parse(storedCart) : []
 
     const [cart, setCart] = useState<Product[]>(initialCart)
+
+    useEffect(() => {
+        if (cart.length > 0) {
+            localStorage.setItem('cart', JSON.stringify(cart))
+        }
+    }, [cart])
+
     const addToCart = (product: Product) => {
         setCart((prevCart) => {
             const existingItem = prevCart.find((item) => item.id === product.id)

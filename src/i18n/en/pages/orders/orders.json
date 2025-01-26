@@ -1,0 +1,12 @@
+{
+    "orders_heading": "All Orders",
+    "order_id": "Order ID",
+    "order_created_at": "Created At",
+    "order_type": "Type",
+    "order_quantity": "Quantity",
+    "order_price": "Price",
+    "orders_loading": "Orders Loading...",
+    "orders_not_found": "No Orders Found",
+    "order_total_price": "Total Price",
+    "order_color": "Color"
+}

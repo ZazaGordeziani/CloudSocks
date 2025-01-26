@@ -14,11 +14,13 @@ import { useQueryClient } from '@tanstack/react-query'
 import Spinner from '@/pages/common-components/spinner'
 import { useUserProfile } from '@/react-query/profile'
 import { PostgrestError } from '@supabase/supabase-js'
+import { Link, useParams } from 'react-router-dom'
 // import { supabase } from '@/supabase'
 // import { getProductsList } from '@/pages/products/components/product-display'
 // getProductsList
 const ProfleView = () => {
     const { t } = useTranslation()
+    const { lang } = useParams()
     const user = useAtomValue(userAtom)
     const { control, handleSubmit, setValue, setError } =
         useForm<ProfileFiledsValues>({
@@ -93,7 +95,9 @@ const ProfleView = () => {
     return (
         <form className="flex h-full w-screen flex-col items-center justify-center gap-4">
             <div className="flex flex-col gap-4 rounded-lg border-2 border-solid border-orange-500 p-10 lg:max-w-[400px]">
-                <label>{t('account_userName')}</label>
+                <label className="text-main-blue">
+                    {t('account_userName')}
+                </label>
                 <Controller
                     name="username"
                     control={control}
@@ -106,7 +110,7 @@ const ProfleView = () => {
                                 <input
                                     onChange={onChange}
                                     value={value}
-                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-black sm:max-w-[400px]"
+                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-main-blue sm:max-w-[400px]"
                                     placeholder={t('account_userName')}
                                 />
                                 {error?.message ? (
@@ -118,7 +122,9 @@ const ProfleView = () => {
                         )
                     }}
                 />
-                <label>{t('account_fullName')}</label>
+                <label className="text-main-blue">
+                    {t('account_fullName')}
+                </label>
                 <Controller
                     name="full_name"
                     control={control}
@@ -132,7 +138,7 @@ const ProfleView = () => {
                                 <input
                                     onChange={onChange}
                                     value={value}
-                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-black sm:max-w-[400px]"
+                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-main-blue sm:max-w-[400px]"
                                     placeholder={t('account_fullName')}
                                 />
                                 {error?.message ? (
@@ -144,7 +150,9 @@ const ProfleView = () => {
                         )
                     }}
                 />
-                <label>{t('account_phoneNumber')}</label>
+                <label className="text-main-blue">
+                    {t('account_phoneNumber')}
+                </label>
                 <Controller
                     name="phone_number"
                     control={control}
@@ -157,7 +165,7 @@ const ProfleView = () => {
                                 <input
                                     onChange={onChange}
                                     value={value}
-                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-black sm:max-w-[400px]"
+                                    className="max-w-[200px] rounded-md border-2 border-solid border-orange-500 p-3 text-main-blue sm:max-w-[400px]"
                                     placeholder={t('account_phoneNumber')}
                                 />
                                 {error?.message ? (
@@ -201,11 +209,17 @@ const ProfleView = () => {
 
                 <Button
                     onClick={handleSubmit(onSubmit)}
-                    className="bg-orange-500 text-xl tracking-wider lg:text-2xl"
+                    className="bg-orange-500 text-xl tracking-wider dark:text-white lg:text-2xl"
                     disabled={isPending}
                 >
                     {isPending ? <Spinner /> : t('account_update')}
                 </Button>
+
+                <Link to={`/${lang}/orders`}>
+                    <Button className="w-full bg-orange-500 text-xl tracking-wider dark:text-white lg:text-2xl">
+                        {t('from_profile_to_my_orders')}
+                    </Button>
+                </Link>
             </div>
         </form>
     )

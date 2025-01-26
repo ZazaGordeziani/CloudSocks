@@ -8,7 +8,7 @@ const CommercialOnMainMobileTablet = () => {
     const { t } = useTranslation()
     return (
         <div>
-            <div className="border-grey-700 flex max-w-[350px] flex-col items-center gap-5 rounded-xl border-2 border-solid p-5">
+            <div className="flex max-w-[350px] flex-col items-center gap-5 rounded-xl border-2 border-solid border-orange-500 p-5">
                 <img
                     src={sock}
                     alt="sock poster"
@@ -23,7 +23,7 @@ const CommercialOnMainMobileTablet = () => {
                     </p>
                 </div>
 
-                <Button className="bg-slate-700 font-bold dark:text-white">
+                <Button className="bg-orange-500 font-bold dark:text-white">
                     <Link to={`/${lang}/products`}>{t('main-buy')} </Link>
                     <p className="pb-2 text-lg">👉</p>
                 </Button>

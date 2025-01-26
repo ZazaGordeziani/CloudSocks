@@ -5,7 +5,7 @@ import HeroTitle from '@/pages/common-components/hero/components/hero-title'
 
 const DesktopPageHero = () => {
     return (
-        <div className="flex h-[40vh] w-screen items-center justify-evenly overflow-hidden bg-light bg-center bg-no-repeat text-slate-500 dark:bg-about-hero-dark dark:text-white">
+        <div className="flex h-[50vh] w-screen items-center justify-evenly overflow-hidden bg-center bg-no-repeat text-slate-500 dark:bg-about-hero-dark dark:text-white">
             <HeroTitle />
             <HeroImgDark />
             <HeroImgLight />

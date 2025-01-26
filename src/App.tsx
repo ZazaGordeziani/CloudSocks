@@ -33,6 +33,9 @@ const LazyPasswordResetPage = lazy(
     () => import('@/pages/reset-password/reset/index'),
 )
 const LazyCartPage = lazy(() => import('@/pages/cart/view/index'))
+const LazyOrdersPage = lazy(
+    () => import('@/pages/account/view/orders/order-page'),
+)
 
 function App() {
     const setUser = useSetAtom(userAtom)
@@ -167,6 +170,16 @@ function App() {
                                     <Suspense fallback={<div>Loading...</div>}>
                                         {/* <AuthGuard> */}
                                         <LazyCartPage />
+                                        {/* </AuthGuard> */}
+                                    </Suspense>
+                                }
+                            />
+                            <Route
+                                path="orders"
+                                element={
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        {/* <AuthGuard> */}
+                                        <LazyOrdersPage />
                                         {/* </AuthGuard> */}
                                     </Suspense>
                                 }

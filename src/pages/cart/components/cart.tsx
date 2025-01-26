@@ -2,18 +2,69 @@
 import { Button } from '@/components/ui/button'
 import { useCart } from '@/hooks/use-cart'
 import CommercialOnMainDesktop from '@/pages/main/components/commercial-window/desktop-version'
+import CommercialOnMainMobileTablet from '@/pages/main/components/commercial-window/mobile-tablet-version'
+import { userAtom } from '@/store/auth'
+import { fillOrderInfo } from '@/supabase/orders'
+import { OrdersListValues } from '@/supabase/orders/index.types'
+import { PostgrestError } from '@supabase/supabase-js'
+import { useMutation } from '@tanstack/react-query'
+import { useMediaQuery } from '@uidotdev/usehooks'
+import { useAtomValue } from 'jotai'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const CartPage = () => {
+    const user = useAtomValue(userAtom)
+    const [isButtonClicked, setIsButtonClicked] = useState(false)
+
     const { cart, removeFromCart, getProductPrice } = useCart()
     const [t] = useTranslation()
     const handleRemove = (productId: number) => {
         removeFromCart(productId)
     }
+
+    const isDesktop = useMediaQuery('(min-width: 1024px)')
+
     const totalPrice = cart.reduce(
         (total, product) => total + getProductPrice(product),
         0,
     )
+
+    const { mutate: handlePlaceOrder } = useMutation({
+        mutationKey: ['place-order'],
+        mutationFn: fillOrderInfo,
+        onSuccess: (orderData) => {
+            console.log('Order saved successfully:', orderData)
+        },
+        onError: (error: PostgrestError) => {
+            console.error('Error placing order:', error)
+        },
+    })
+
+    const placeOrder = () => {
+        if (!user) {
+            alert('Please log in to place an order.')
+            return
+        }
+        setIsButtonClicked(true)
+        const orderPayload: OrdersListValues = {
+            user_id: user!.user.id,
+            total_price: totalPrice.toString(),
+            items: cart.map((product) => ({
+                id: product.id.toString(),
+                type: product.type,
+                color: product.color,
+                image_url: product.image_url,
+                quantity: product.quantity,
+                price: getProductPrice(product),
+            })),
+        }
+
+        handlePlaceOrder(orderPayload)
+        setTimeout(() => {
+            setIsButtonClicked(false)
+        }, 500)
+    }
 
     return (
         <div className="flex min-h-screen w-screen flex-col items-center gap-4">
@@ -23,14 +74,18 @@ const CartPage = () => {
             {cart.length === 0 ? (
                 <div className="flex flex-col items-center gap-y-7">
                     <p className="text-xl md:text-2xl">{t('empty_cart')}</p>
-                    <CommercialOnMainDesktop />
+                    {isDesktop ? (
+                        <CommercialOnMainDesktop />
+                    ) : (
+                        <CommercialOnMainMobileTablet />
+                    )}
                 </div>
             ) : (
                 <div className="flex flex-col gap-4">
                     {cart.map((product) => (
                         <div
                             key={product.id}
-                            className="flex w-[300px] flex-col items-center gap-10 rounded-lg border-2 border-solid border-black p-8 md:w-auto md:flex-row md:gap-20"
+                            className="flex w-[300px] flex-col items-center gap-10 rounded-lg border-2 border-solid border-black p-8 dark:border-white md:w-auto md:flex-row md:gap-20"
                         >
                             <img
                                 src={`${import.meta.env.VITE_SUPABASE_PRODUCT_IMAGES_STORAGE_URL}/${product.image_url}`}
@@ -59,7 +114,10 @@ const CartPage = () => {
                         <p>
                             {t('cart_total_price')}: <span>${totalPrice}</span>
                         </p>
-                        <Button className="text-xl md:text-2xl">
+                        <Button
+                            className={`text-xl md:text-2xl ${isButtonClicked ? 'bg-green-500' : ''}`}
+                            onClick={placeOrder}
+                        >
                             {t('cart_make_order')}{' '}
                         </Button>
                     </div>

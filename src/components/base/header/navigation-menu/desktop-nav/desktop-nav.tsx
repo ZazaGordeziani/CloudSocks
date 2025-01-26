@@ -12,7 +12,6 @@ const DesktopNav = () => {
                 <NavLink
                     to="home"
                     className={({ isActive }) => {
-                        console.log('Active state:', isActive) // Debug active state
                         return isActive ? 'text-orange-500' : 'text-white'
                     }}
                 >
@@ -21,7 +20,6 @@ const DesktopNav = () => {
                 <NavLink
                     to="products"
                     className={({ isActive }) => {
-                        console.log('Active state:', isActive) // Debug active state
                         return isActive ? 'text-orange-500' : 'text-white'
                     }}
                 >
@@ -30,7 +28,6 @@ const DesktopNav = () => {
                 <NavLink
                     to="about"
                     className={({ isActive }) => {
-                        console.log('Active state:', isActive) // Debug active state
                         return isActive ? 'text-orange-500' : 'text-white'
                     }}
                 >

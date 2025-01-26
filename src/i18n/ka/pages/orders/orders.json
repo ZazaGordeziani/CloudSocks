@@ -1,0 +1,12 @@
+{
+    "orders_heading": "ყველა შეკვეთა",
+    "order_id": "შეკვეთს კოდი",
+    "order_created_at": "შეკვეთის თარიღი",
+    "order_type": "ტიპი",
+    "order_quantity": "რაოდენობა",
+    "order_price": "ფასი",
+    "orders_loading": "შეკვეთები იტვირთება",
+    "orders_not_found": "შეკვეთა ვერ მოიძებნა",
+    "order_total_price": "ჯამი",
+    "order_color": "ფერი"
+}

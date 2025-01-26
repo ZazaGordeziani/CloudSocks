@@ -12,7 +12,7 @@ const CommercialOnMainDesktop = () => {
     }
     return (
         <div>
-            <div className="border-grey-700 max-w-auto flex h-full flex-row items-center gap-5 rounded-xl border-2 border-solid p-5">
+            <div className="max-w-auto flex h-full flex-row items-center gap-5 rounded-xl border-2 border-solid border-orange-500 p-5">
                 <img
                     src={sock}
                     alt="sock poster"

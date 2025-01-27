@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
@@ -20,18 +20,21 @@ const SignUpFormDefaultValues = {
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
-
+    const [signInButtonClass, setSignInButtonClass] = useState<string>(
+        'text-xl lg:text-2xl',
+    )
+    const [emailSentMessage, setEmailSentMessage] = useState<string>('')
     const { control, handleSubmit } = useForm<SignUpFormValues>({
         resolver: zodResolver(SignUpFormSchema),
         defaultValues: SignUpFormDefaultValues,
     })
-    const navigate = useNavigate()
     const { lang } = useParams()
     const { t } = useTranslation()
 
     const { mutate: handleRegister, isPending } = useRegister({
         onSuccess: () => {
-            navigate(`/${lang}/signin`)
+            setSignInButtonClass('bg-main-blue text-xl lg:text-2xl')
+            setEmailSentMessage(t('check_your_email'))
         },
         onError: (error) => {
             console.error('Error during registration:', error.message)
@@ -122,13 +125,18 @@ const SignUp = () => {
                 >
                     {isPending ? <Spinner /> : t('sign-up-submit')}
                 </Button>
+                {emailSentMessage && (
+                    <p className="mt-4 w-full text-center text-2xl text-main-blue md:text-2xl">
+                        {emailSentMessage}
+                    </p>
+                )}
                 <div className="flex justify-between pt-10 lg:w-[800px]">
                     <p className="my-auto lg:text-2xl">
                         {t('sign-up-account-question')}
                     </p>
 
                     <Link to={`/${lang}/signin`}>
-                        <Button className="text-xl lg:text-2xl">
+                        <Button className={signInButtonClass}>
                             {t('sign-up-login')}
                         </Button>
                     </Link>

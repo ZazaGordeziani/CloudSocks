@@ -3,5 +3,6 @@
     "sign-up-account-question": "Do you have an account?",
     "sign-up-login": "Sign In",
     "invalid_email": "Invalid Email",
-    "invalid_password": "Invalid password"
+    "invalid_password": "Invalid password",
+    "check_your_email": "Check Email to Confirm Registration"
 }

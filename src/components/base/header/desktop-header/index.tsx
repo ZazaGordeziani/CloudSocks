@@ -29,7 +29,9 @@ export const DesktopHeader = () => {
                         }
                         to="profile"
                     >
-                        {userProfile?.[0].username}
+                        {userProfile?.[0].username
+                            ? userProfile?.[0].username
+                            : 'Profile'}
                     </NavLink>
                 ) : null}
             </div>

@@ -40,7 +40,9 @@ const MobileNav = () => {
                                     to="profile"
                                     className="w-fit rounded-3xl border-4 border-solid border-sky-300 bg-white p-3 text-main-blue"
                                 >
-                                    {userProfile?.[0].username}
+                                    {userProfile?.[0].username
+                                        ? userProfile?.[0].username
+                                        : 'Profile'}
                                 </Link>
                             ) : null}
                             <Link to="home" onClick={closeDrawer}>

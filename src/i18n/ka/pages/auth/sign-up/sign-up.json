@@ -2,5 +2,6 @@
     "sign-in-submit": "შესვლა",
     "sign-in-account-question": "არ გაქვთ ანგარიში?",
     "sign-in-register": "რეგისტრაცია",
-    "invalid_email": "ელ.ფოსტა არასწორია"
+    "invalid_email": "ელ.ფოსტა არასწორია",
+    "check_your_email": "შეამოწმეთ ელ-ფოსტა და დაადასტურეთ რეგისტრაცია"
 }

@@ -13,6 +13,7 @@ export type CartContextType = {
     addToCart: (product: Product) => void
     removeFromCart: (productId: number) => void
     getProductPrice: (product: Product) => number
+    clearCart: () => void
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -31,6 +32,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     useEffect(() => {
         if (cart.length > 0) {
             localStorage.setItem('cart', JSON.stringify(cart))
+        } else {
+            localStorage.removeItem('cart')
         }
     }, [cart])
 
@@ -64,12 +67,24 @@ export const CartProvider = ({ children }: CartProviderProps) => {
             return updatedCart
         })
     }
+
+    const clearCart = () => {
+        console.log('Clearing cart')
+        setCart([])
+        localStorage.setItem('cart', JSON.stringify([]))
+    }
     const getProductPrice = (product: Product) => {
         return product.quantity * 12
     }
     return (
         <CartContext.Provider
-            value={{ cart, addToCart, removeFromCart, getProductPrice }}
+            value={{
+                cart,
+                addToCart,
+                removeFromCart,
+                getProductPrice,
+                clearCart,
+            }}
         >
             {children}
         </CartContext.Provider>

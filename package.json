@@ -11,7 +11,7 @@
         "prettier": "prettier . --write",
         "preview": "vite preview",
         "prepare": "husky",
-        "update-supabase-types": "npx supabase gen types typescript --project-id qxbldcftpfhmgncpxrhx --schema public > src/supabase/supabase.types.tsnpx supabase gen types typescript --project-id qxbldcftpfhmgncpxrhx --schema public > src/supabase/supabase.types.ts"
+        "update-supabase-types": "npx supabase gen types typescript --project-id wmtvisqkrfdmhhfeunqm --schema public > src/supabase/supabase.types.tsnpx supabase gen types typescript --project-id wmtvisqkrfdmhhfeunqm --schema public > src/supabase/supabase.types.ts"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.10.0",
@@ -60,7 +60,7 @@
         "postcss": "^8.4.49",
         "prettier": "3.4.2",
         "prettier-plugin-tailwindcss": "^0.6.9",
-        "supabase": "^2.6.8",
+        "supabase": ">=1.8.1",
         "tailwindcss": "^3.4.17",
         "typescript": "~5.6.2",
         "typescript-eslint": "^8.18.2",

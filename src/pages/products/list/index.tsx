@@ -18,6 +18,7 @@ import { deleteProduct } from '@/supabase/products'
 import { useMutation } from '@tanstack/react-query'
 import { useAtomValue } from 'jotai'
 import { userAtom } from '@/store/auth'
+import Spinner from '@/pages/common-components/spinner'
 
 const DisplayProduct = () => {
     const user = useAtomValue(userAtom)
@@ -27,6 +28,7 @@ const DisplayProduct = () => {
     const [bgColorProductId, setBgColorProductId] = useState<number | null>(
         null,
     )
+    const [imgIsLoading, setImgIsLoading] = useState<boolean>(true)
     const { addToCart } = useCart()
     const parsedQueryParams = {
         ...productFilterFromDefaultValues,
@@ -49,7 +51,7 @@ const DisplayProduct = () => {
 
                 setSearchParams(
                     qs.stringify(
-                        { debouncedSearchText },
+                        { searchText: debouncedSearchText },
                         {
                             skipNulls: true,
                             filter: (_, value) => value || undefined,
@@ -120,10 +122,12 @@ const DisplayProduct = () => {
                             className="max-w[400px] flex w-[284px] flex-col gap-y-8 rounded-lg border-2 border-solid border-black p-6 pb-8 dark:border-white lg:w-[400px]"
                         >
                             <div>
+                                {imgIsLoading && <Spinner />}
                                 <img
                                     src={productImageUrl}
                                     alt="product image"
                                     className="rounded-lg border-2 border-gray-500"
+                                    onLoad={() => setImgIsLoading(false)}
                                 />
                             </div>
                             <div>

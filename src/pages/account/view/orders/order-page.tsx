@@ -44,12 +44,15 @@ const OrdersPage = () => {
         return <div className="text-4xl">{t('orders_not_found')}</div>
     }
 
+    const sortedOrders = [...orders].sort((a, b) => {
+        return dayjs(b.created_at).unix() - dayjs(a.created_at).unix()
+    })
     return (
         <div className="flex min-h-screen w-screen flex-col items-center gap-8 px-5">
             <h2 className="text-2xl text-main-blue dark:text-white lg:text-4xl">
                 {t('orders_heading')}
             </h2>
-            {orders.map((order) => {
+            {sortedOrders.map((order) => {
                 const items = order.items as {
                     id: string
                     type: string

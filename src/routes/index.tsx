@@ -1,4 +1,5 @@
 import DefaultLayout from '@/layouts/default'
+import Spinner from '@/pages/common-components/spinner'
 import AuthGuard from '@/route-guards/auth/auth-guard'
 import UnAuthorizedGuard from '@/route-guards/auth/un-auth-guard'
 import { lazy, Suspense } from 'react'
@@ -49,7 +50,7 @@ export const AppRoutes = () => {
                 <Route
                     path="products"
                     element={
-                        <Suspense fallback={<div>Loading...</div>}>
+                        <Suspense fallback={<Spinner />}>
                             <LazyProductsPage />
                         </Suspense>
                     }

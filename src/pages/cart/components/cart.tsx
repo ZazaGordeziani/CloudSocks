@@ -19,7 +19,7 @@ const CartPage = () => {
     const { lang } = useParams()
     const [isButtonClicked, setIsButtonClicked] = useState(false)
 
-    const { cart, removeFromCart, getProductPrice } = useCart()
+    const { cart, removeFromCart, clearCart, getProductPrice } = useCart()
     const [t] = useTranslation()
     const handleRemove = (productId: number) => {
         removeFromCart(productId)
@@ -44,6 +44,7 @@ const CartPage = () => {
     })
 
     const placeOrder = () => {
+        clearCart()
         setIsButtonClicked(true)
         const orderPayload: OrdersListValues = {
             user_id: user!.user.id,

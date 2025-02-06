@@ -42,7 +42,7 @@ const MobileNav = () => {
                                 >
                                     {userProfile?.[0].username
                                         ? userProfile?.[0].username
-                                        : 'Profile'}
+                                        : t('profile')}
                                 </Link>
                             ) : null}
                             <Link to="home" onClick={closeDrawer}>

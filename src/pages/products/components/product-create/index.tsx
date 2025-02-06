@@ -37,7 +37,7 @@ const ProductsCreate = () => {
         }
         if (productValues.image_file) {
             supabase.storage
-                .from('products_images')
+                .from('product_images')
                 .upload(
                     productValues?.image_file?.name,
                     productValues.image_file,
@@ -56,6 +56,7 @@ const ProductsCreate = () => {
                         })
                 })
         }
+
         setButtonBgColor(true)
         setTimeout(() => {
             setButtonBgColor(false)

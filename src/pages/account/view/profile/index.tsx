@@ -61,7 +61,7 @@ const ProfleView = () => {
     return (
         <form className="flex h-full w-screen flex-col items-center justify-center gap-4">
             <div className="flex flex-col gap-4 rounded-lg border-2 border-solid border-orange-500 p-10 lg:max-w-[400px]">
-                <label className="text-main-blue">
+                <label className="text-main-blue dark:text-orange-500">
                     {t('account_userName')}
                 </label>
                 <Controller
@@ -88,7 +88,7 @@ const ProfleView = () => {
                         )
                     }}
                 />
-                <label className="text-main-blue">
+                <label className="text-main-blue dark:text-orange-500">
                     {t('account_fullName')}
                 </label>
                 <Controller
@@ -115,7 +115,7 @@ const ProfleView = () => {
                         )
                     }}
                 />
-                <label className="text-main-blue">
+                <label className="text-main-blue dark:text-orange-500">
                     {t('account_phoneNumber')}
                 </label>
                 <Controller
